@@ -1,4 +1,2 @@
-OceanJet V51 No-Recovery Role Workspace
-Source: repaired V47 fixed package.
-Removed automatic recovery/blank-screen watcher system.
-Organized tabs by Passenger, Cashier, and Admin.
+OceanJet V52 Deep Stability Fix
+Upload all files to GitHub Pages. This build disables recovery/blank-screen auto-runners and uses a stable role workspace.
