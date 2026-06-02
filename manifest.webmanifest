@@ -1,7 +1,7 @@
 {
-  "name": "OceanJet PortDesk V75",
-  "short_name": "PortDesk V75",
-  "description": "OceanJet PortDesk V75 Operations Command rebuild",
+  "name": "OceanJet PortDesk V81",
+  "short_name": "PortDesk V81",
+  "description": "OceanJet PortDesk V81 AI-managed control floor upgrade",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#061522",

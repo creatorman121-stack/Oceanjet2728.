@@ -1,5 +1,5 @@
-const CACHE = 'oceanjet-portdesk-v75-operations-command';
-const APP_SHELL = ['./index.html','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png'];
+const CACHE = 'oceanjet-portdesk-v81-ai-managed-control-floor';
+const APP_SHELL = ['./index.html','./manifest.webmanifest','./operations-rules.json','./workflow-blueprint.json','./icons/icon-192.png','./icons/icon-512.png'];
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(APP_SHELL).catch(()=>{})));

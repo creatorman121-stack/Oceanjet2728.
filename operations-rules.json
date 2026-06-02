@@ -1,0 +1,34 @@
+{
+  "version": "V81",
+  "upgrade": "AI-managed control floor with readiness scoring and workflow QA",
+  "boardingLogic": {
+    "boardingStartsMinutesBeforeDeparture": 12,
+    "departingSoonMinutesBeforeDeparture": 5,
+    "departedGraceMinutesAfterDeparture": 10
+  },
+  "preserved": [
+    "organized V55-style baggage calculator UI",
+    "baggage-only receipt",
+    "manual Damage Evidence Studio",
+    "role-based navigation"
+  ],
+  "forbidden": [
+    "recovery loops",
+    "blank-screen watchers",
+    "DOM observer repair",
+    "setInterval UI repair",
+    "auto scanner",
+    "auto capture",
+    "navigation auto-fixer"
+  ],
+  "routes": [
+    "Cebu \u2192 Maasin",
+    "Cebu \u2192 Surigao",
+    "Cebu \u2192 Tagbilaran",
+    "Cebu \u2192 Dumaguete",
+    "Cebu \u2192 Siquijor",
+    "Cebu \u2192 Ormoc",
+    "Cebu \u2192 Getafe",
+    "Cebu \u2192 Palompon"
+  ]
+}

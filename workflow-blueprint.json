@@ -1,0 +1,31 @@
+{
+  "version": "V81",
+  "modules": [
+    "Control Floor",
+    "Port Operations",
+    "Baggage Estimate",
+    "Damage Evidence Studio",
+    "Claim Intake",
+    "Review Queue",
+    "Reports",
+    "System Tools"
+  ],
+  "manualActions": [
+    "export control packet",
+    "lock complete evidence pairs",
+    "smart workflow relink",
+    "command search",
+    "download workflow QA JSON"
+  ],
+  "readinessChecks": [
+    "trip board exists",
+    "vessel names",
+    "gate/pier",
+    "departure time",
+    "evidence pairs",
+    "evidence locks",
+    "claim trip links",
+    "baggage trip links",
+    "backup reminder"
+  ]
+}
