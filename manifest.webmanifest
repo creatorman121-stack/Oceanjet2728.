@@ -1,7 +1,7 @@
 {
-  "name": "OceanJet PortDesk V64",
-  "short_name": "PortDesk V64",
-  "description": "Clean OceanJet role workspace with fixed role switching, fresh manual Damage Evidence Studio, sealed automation, intake assistant, operations board, unified search, handover checklist, quality control, shift settlement, baggage calculator, and no recovery/scanner loops.",
+  "name": "OceanJet PortDesk V67",
+  "short_name": "PortDesk V67",
+  "description": "OceanJet PortDesk V67 with restored baggage calculator",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#061522",
