@@ -1,4 +1,4 @@
-const CACHE = 'oceanjet-portdesk-v69-baggage-estimate';
+const CACHE = 'oceanjet-portdesk-v75-operations-command';
 const APP_SHELL = ['./index.html','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png'];
 self.addEventListener('install', event => {
   self.skipWaiting();

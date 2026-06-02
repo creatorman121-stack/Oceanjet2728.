@@ -1,7 +1,7 @@
 {
-  "name": "OceanJet PortDesk V69",
-  "short_name": "PortDesk V69",
-  "description": "OceanJet PortDesk V69 with baggage estimate-focused calculator",
+  "name": "OceanJet PortDesk V75",
+  "short_name": "PortDesk V75",
+  "description": "OceanJet PortDesk V75 Operations Command rebuild",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#061522",
