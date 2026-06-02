@@ -1,1 +1,13 @@
-{"name":"OceanJet Baggage Pro V52 Deep Stability","short_name":"OceanJet V52","start_url":"./index.html?v=52","display":"standalone","background_color":"#030712","theme_color":"#53ebff","icons":[{"src":"icons/icon-192.png","sizes":"192x192","type":"image/png"},{"src":"icons/icon-512.png","sizes":"512x512","type":"image/png"}]}
+{
+  "name": "OceanJet PortDesk V63",
+  "short_name": "PortDesk V63",
+  "description": "Clean scratch-build OceanJet role workspace with sealed automation, intake assistant, operations board, unified search, handover checklist, quality control, shift settlement, baggage calculator, and damage evidence studio.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#061522",
+  "theme_color": "#051a2f",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
