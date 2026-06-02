@@ -1,21 +1,19 @@
-OceanJet PortDesk V63 - Intake & Operations Board Build
+OceanJet PortDesk V64 - Role and Damage Clean Fix
 
-Upload all files/folders in this ZIP to GitHub Pages.
+Upload all files in this ZIP to GitHub Pages.
 
-Important after upload:
-1. Open the app.
-2. Login as Admin: demo / demo unless changed.
-3. Go to System Tools.
-4. Tap Clear Old App Cache.
-5. Reload once.
+Default logins:
+Passenger: tap Passenger then Continue
+Cashier: cashier / cashier
+Admin: demo / demo
 
-V63 highlights:
-- Continued from V62 scratch/sealed base.
-- Added Intake Assistant to search first and prevent duplicate claims.
-- Added Operations Board for manual priority and route-load triage.
-- Added High/Medium/Normal priority labels in queue and case details.
-- Added copyable case summary and passenger update message.
-- Added claim acknowledgment copy/print after submitting a claim.
-- Added V63 Daily Packet TXT export and Audit CSV export.
-- Kept Unified Search, Handover Checklist, Quality Control, Shift Settlement, compressed evidence photos, and sealed automation.
-- No recovery loops, no auto scanner, no auto repair watchers, no background interval loops, no DOM observer loops.
+V64 fixes:
+- Role login updates badge, dashboard, sidebar, and bottom navigation together.
+- Cashier workspace no longer remains labeled as Passenger after login.
+- Admin workspace has full access.
+- Passenger sees only public/passenger tools.
+- Damage Evidence Studio is fresh/manual only.
+- No old V54/V62 default evidence is imported automatically.
+- No auto scanner, auto capture, recovery overlay, blank-screen watcher, setInterval UI repair, or DOM observer repair.
+
+After uploading, open Admin -> System Tools -> Clear Old App Cache once, then reload.

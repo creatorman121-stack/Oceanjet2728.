@@ -1,4 +1,4 @@
-const CACHE = 'oceanjet-portdesk-v63-intake-board';
+const CACHE = 'oceanjet-portdesk-v64-role-damage-clean';
 const APP_SHELL = ['./index.html','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png'];
 self.addEventListener('install', event => {
   self.skipWaiting();
