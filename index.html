@@ -25,10 +25,10 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <title>OceanJet Baggage Pro V47 Stability + Efficiency</title>
+    <title>OceanJet Command V55 System UI</title>
     <!-- V17 GitHub Pages / PWA package metadata -->
     <meta name="theme-color" content="#070b19">
-    <meta name="application-name" content="OceanJet Baggage Pro V47">
+    <meta name="application-name" content="OceanJet Command V55">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="OceanJet">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -557,7 +557,16 @@ function buildCalculator() {
   $('view-calculator').innerHTML = `
     <div class="card glow">
       <div class="card-header">🧮 Baggage Calculator</div>
-      <div class="input-group"><label>Route</label><select id="calcRoute">${['cebu_tagbilaran','cebu_ormoc','cebu_palompon','cebu_dumaguete','cebu_surigao','cebu_siquijor'].map(k => `<option value="${k}">${k.split('_')[1].toUpperCase()}</option>`).join('')}</select></div>
+      <div class="input-group"><label>Route</label><select id="calcRoute">${[
+        ['cebu_tagbilaran','Cebu → Tagbilaran'],
+        ['cebu_maasin','Cebu → Maasin'],
+        ['cebu_surigao','Cebu → Surigao via Maasin'],
+        ['cebu_siquijor','Cebu → Siquijor via Tagbilaran'],
+        ['cebu_dumaguete','Cebu → Dumaguete via Tagbilaran'],
+        ['cebu_ormoc','Cebu → Ormoc'],
+        ['cebu_palompon','Cebu → Palompon'],
+        ['cebu_getafe','Cebu → Getafe']
+      ].map(([k,label]) => `<option value="${k}">${label}</option>`).join('')}</select></div>
       <div class="input-group"><label>Mode</label><select id="calcMode"><option value="normal">Normal</option><option value="fragile">Fragile</option></select></div>
       <div id="normalFields">
         <div class="grid2">
@@ -575,7 +584,7 @@ function buildCalculator() {
     </div>
     <div class="receipt" id="receipt"></div>
   `;
-  $('calcRoute').value = 'cebu_ormoc';
+  $('calcRoute').value = 'cebu_tagbilaran';
   $('calcMode').addEventListener('change', () => {
     const isFragile = $('calcMode').value === 'fragile'; const grid = $('normalFields').querySelector('.grid2'); if(grid) grid.style.display = isFragile ? 'none' : 'grid';
   });
@@ -1264,7 +1273,7 @@ applyTheme();
   .receipt .v6-receipt-note{background:#111827;color:#e5e7eb;border-radius:8px;padding:6px;margin-top:6px;font-family:Arial,sans-serif;font-size:.7rem}.receipt .v6-receipt-note b{color:#67e8f9}
   @media(max-width:430px){.v6-grid,.v6-grid3{grid-template-columns:1fr}.v6-floating-tools{bottom:74px}.chat-panel{right:10px;left:10px;width:auto}.brand{font-size:1.05rem}.clock{display:none}}
 </style>
-<script>
+<script type="text/plain" data-disabled-by-v55="preserved-not-auto-run">
 (function(){
   'use strict';
   const PATCH_VERSION='v6-source-clean-plus';
@@ -1415,7 +1424,7 @@ applyTheme();
   @media(max-width:520px){.v7-grid,.v7-grid3,.v7-grid4{grid-template-columns:1fr}.v7-pass-grid{grid-template-columns:1fr}.v7-command-btn{bottom:142px;right:10px}.v7-mini-dock{right:10px;bottom:198px}.v7-orbit{height:250px}.v7-port{font-size:.62rem}}
   @media print{.v7-pass,.v7-pass *{visibility:visible}.v7-pass{position:fixed;inset:12px;z-index:9999}.v7-pass button{display:none!important}}
 </style>
-<script>
+<script type="text/plain" data-disabled-by-v55="preserved-not-auto-run">
 (function(){
   'use strict';
   const V7_VERSION='v7-innovation-pack-source-based';
@@ -1546,7 +1555,7 @@ applyTheme();
   @media(max-width:760px){.v8-command-grid,.v8-vessel-grid,.v8-port-grid{grid-template-columns:1fr}.v8-kpi-grid{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:430px){.v8-kpi-grid{grid-template-columns:1fr}.v8-pass-layout{grid-template-columns:1fr}.v8-pulse-map{height:330px}.v8-node{font-size:.58rem}}
 </style>
-<script>
+<script type="text/plain" data-disabled-by-v55="preserved-not-auto-run">
 (function(){
   'use strict';
   const V8_VERSION='v8-pack3-command-center-source-based';
@@ -1598,7 +1607,7 @@ applyTheme();
 
 
 
-<script>
+<script id="oj11LegacyEvidenceEngine" type="text/plain" data-disabled-by-v54="replaced-by-clean-manual-evidence-studio">
 (function(){
   'use strict';
 
@@ -1900,9 +1909,9 @@ applyTheme();
     const startX=40,endX=120,startY=25,endY=95;
     for(let y=1;y<h-1;y+=2){ for(let x=1;x<w-1;x+=2){ const i=(y*w+x)*4; const r=img[i],g=img[i+1],b=img[i+2]; const lum=(r+g+b)/3; bright+=lum; count++; if(x>startX&&x<endX&&y>startY&&y<endY){rs+=r;gs+=g;bs+=b;centerCount++; if(lum>35&&lum<245) coverage++;} const i2=(y*w+x+1)*4; edges+=Math.abs(lum-((img[i2]+img[i2+1]+img[i2+2])/3)); }}
     bright=bright/count; edges=edges/count; const center=[rs/centerCount,gs/centerCount,bs/centerCount];
-    if(lastFrame){ for(let i=0;i<img.length;i+=16) diff += Math.abs(img[i]-lastFrame[i]); diff = diff/(img.length/16); }
+    if(lastFrameSmall){ for(let i=0;i<img.length;i+=16) diff += Math.abs(img[i]-lastFrameSmall[i]); diff = diff/(img.length/16); }
     lastFrameSmall = new Uint8ClampedArray(img); const stability = Math.max(0,100-diff*1.9); const sharpness=Math.min(100,edges*7.5); const covPct=Math.min(100,coverage/centerCount*100*1.8); const score=Math.round((Math.min(100,bright*1.15)*.22)+(sharpness*.24)+(stability*.34)+(Math.min(100,covPct)*.20));
-    lastFrame=lastFrameSmall; return {score,brightness:Math.round(bright),sharpness:Math.round(sharpness),stability:Math.round(stability),coverage:covPct,color:classifyColor(center[0],center[1],center[2]),size:sizeFromCoverage(covPct),texture:Math.round(edges)};
+    return {score,brightness:Math.round(bright),sharpness:Math.round(sharpness),stability:Math.round(stability),coverage:covPct,color:classifyColor(center[0],center[1],center[2]),size:sizeFromCoverage(covPct),texture:Math.round(edges)};
   }
   function classifyColor(r,g,b){ const max=Math.max(r,g,b),min=Math.min(r,g,b); if(max<45) return 'Black'; if(min>215) return 'White'; if(max-min<22){ if(max>175)return 'Silver'; return 'Gray'; } if(r>g*1.25&&r>b*1.25) return r>180&&b>100?'Pink':'Red'; if(b>r*1.18&&b>g*1.12) return 'Blue'; if(g>r*1.1&&g>b*1.1) return 'Green'; if(r>120&&g>80&&b<75) return 'Brown'; if(r>160&&g>130&&b<80) return 'Yellow'; if(r>180&&g>95&&b<80) return 'Orange'; if(r>110&&b>120&&g<110) return 'Purple'; return 'Mixed/Patterned'; }
   function sizeFromCoverage(c){ if(c>82)return 'Oversized'; if(c>62)return 'Large'; if(c>38)return 'Medium'; return 'Small'; }
@@ -2002,7 +2011,7 @@ applyTheme();
     pointer-events: auto !important;
   }
 </style>
-<script id="v13CleanNavScript">
+<script id="v13CleanNavScript" type="text/plain" data-disabled-by-v55="preserved-not-auto-run">
 (function(){
   if(window.__v13CleanLeftNavOnly) return;
   window.__v13CleanLeftNavOnly = true;
@@ -3012,7 +3021,7 @@ applyTheme();
   .v18-glow-dot{width:10px;height:10px;border-radius:50%;background:var(--v18-green);box-shadow:0 0 18px var(--v18-green);display:inline-block}.v18-glow-dot.warn{background:var(--v18-amber);box-shadow:0 0 18px var(--v18-amber)}.v18-glow-dot.bad{background:var(--v18-red);box-shadow:0 0 18px var(--v18-red)}
   .v18-code{background:rgba(2,6,23,.55);border:1px solid var(--border);border-radius:14px;padding:10px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.72rem;color:var(--text2);white-space:pre-wrap;overflow:auto}
 </style>
-<script id="v18FutureScript">
+<script id="v18FutureScript" type="text/plain" data-disabled-by-v55="preserved-not-auto-run">
 (function(){
   'use strict';
   if(window.__OCEAN_V18_FUTURE_PACK__) return;
@@ -3310,7 +3319,7 @@ applyTheme();
     .v19-title{flex-direction:column}.v19-chip{align-self:flex-start}.v19-grid,.v19-grid2{grid-template-columns:1fr}.v19-row{align-items:flex-start;flex-direction:column}.v19-row .v19-pill{align-self:flex-start}.v19-chatbox{height:260px}.v19-inputbar{grid-template-columns:1fr}.v19-radar{min-height:190px}.v19-actionbar{grid-template-columns:1fr 1fr}.v19-actionbar button{font-size:.76rem;padding:9px 6px!important}
   }
 </style>
-<script id="v19FutureFleetPatch">
+<script id="v19FutureFleetPatch" type="text/plain" data-disabled-by-v55="preserved-not-auto-run">
 (function(){
   if(window.__OJ_V19_FUTURE_FLEET__) return;
   window.__OJ_V19_FUTURE_FLEET__ = true;
@@ -3964,7 +3973,7 @@ applyTheme();
 
 
 <!-- OCEAN FAST FERRIES V23 EFFICIENCY + EFFECTIVENESS ENGINE -->
-<script>
+<script type="text/plain" data-disabled-by-v55="preserved-not-auto-run">
 (function(){
   'use strict';
   if(window.__OJ_V23_EFFICIENCY_ENGINE__) return;
@@ -4477,7 +4486,7 @@ applyTheme();
   .v24-bottom-space{height:calc(12px + env(safe-area-inset-bottom,0px))}
   @media(max-width:540px){.v24-grid2{grid-template-columns:1fr}.v24-ticket{grid-template-columns:1fr;text-align:center}.v24-ticket canvas{margin:auto}.v24-row{align-items:flex-start}.v24-row .v24-chip{margin-top:2px}.v24-title{flex-direction:column}.v24-actions{grid-template-columns:1fr 1fr}.v24-service-card{min-height:auto}}
 </style>
-<script id="v24ServiceOpsScript">
+<script id="v24ServiceOpsScript" type="text/plain" data-disabled-by-v55="preserved-not-auto-run">
 (function(){
   if(window.__OJ_V24_SERVICE_OPS_PORTAL__) return;
   window.__OJ_V24_SERVICE_OPS_PORTAL__ = true;
@@ -4698,7 +4707,7 @@ applyTheme();
   .v25-bottom-space{height:74px}.v25-compact *{animation:none!important;transition:none!important}.v25-compact .card{box-shadow:none!important}.v25-compact .v25-shell{box-shadow:none!important}
   @media(max-width:560px){.v25-title{display:block}.v25-title .v25-chip{margin-top:9px}.v25-grid2{grid-template-columns:1fr}.v25-row{align-items:flex-start}.v25-row .right{min-width:72px}.v25-action-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.v25-action{min-height:98px;padding:11px}.v25-kpi b{font-size:1.25rem}}
 </style>
-<script id="ojV25SmartOpsScript">
+<script id="ojV25SmartOpsScript" type="text/plain" data-disabled-by-v55="preserved-not-auto-run">
 (function(){
   if(window.__OJ_V25_SMART_OPS__) return;
   window.__OJ_V25_SMART_OPS__ = true;
@@ -4813,7 +4822,7 @@ applyTheme();
   .v26-qr{width:120px;height:120px;border-radius:12px;background:repeating-linear-gradient(45deg,#111 0 7px,#fff 7px 13px);border:8px solid white;margin:auto;box-shadow:0 0 20px rgba(125,249,255,.2)}.v26-qr::after{content:"";display:block;width:52px;height:52px;background:#111;margin:26px;border:7px solid white}.v26-input-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}
   @media(max-width:420px){.v26-grid3{grid-template-columns:1fr}.v26-grid,.v26-action-grid{grid-template-columns:1fr}.v26-title{display:block}.v26-chip{margin-top:8px}.v26-row{align-items:flex-start;flex-direction:column}.v26-row button{width:100%}.card{margin-bottom:12px!important}.v26-input-row{grid-template-columns:1fr}}
 </style>
-<script id="v26-real-script">
+<script id="v26-real-script" type="text/plain" data-disabled-by-v55="preserved-not-auto-run">
 (function(){
   'use strict';
   if(window.__OFF_V26_REAL__) return;
@@ -4945,7 +4954,7 @@ applyTheme();
   .v27-hide-on-fast{display:block}body.oj-v27-fast .v27-hide-on-fast{display:none!important}
   @media(max-width:430px){.v27-grid,.v27-grid3{grid-template-columns:1fr}.v27-title{flex-direction:column}.v27-row{align-items:flex-start;flex-direction:column}.v27-row .right{justify-content:flex-start}.v27-action{min-height:105px}.v27-map{height:235px}.v27-searchbox{top:54px}.v27-shell{padding:14px;border-radius:22px}}
 </style>
-<script id="ojV27MajorScript">
+<script id="ojV27MajorScript" type="text/plain" data-disabled-by-v55="preserved-not-auto-run">
 (function(){
   if(window.__OJ_V27_MAJOR_COMMAND_UPGRADE__) return;
   window.__OJ_V27_MAJOR_COMMAND_UPGRADE__ = true;
@@ -5092,7 +5101,7 @@ applyTheme();
   .v28-mapline{height:145px;border-radius:18px;border:1px solid rgba(73,247,255,.18);background:linear-gradient(135deg,rgba(5,10,28,.75),rgba(0,0,0,.35));position:relative;overflow:hidden}.v28-mapline:before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 18px,rgba(73,247,255,.06) 19px,transparent 20px)}.v28-port{position:absolute;transform:translate(-50%,-50%);border:1px solid rgba(73,247,255,.5);background:rgba(3,8,20,.9);border-radius:999px;padding:4px 7px;font-size:.62rem;color:var(--v28-cyan);z-index:2}.v28-vessel{position:absolute;width:15px;height:15px;border-radius:50%;background:var(--v28-pink);box-shadow:0 0 18px var(--v28-pink);z-index:3;animation:v28sail 4.5s infinite alternate ease-in-out}@keyframes v28sail{from{left:16%;top:67%}to{left:78%;top:29%}}
   @media(max-width:520px){.v28-grid,.v28-grid2{grid-template-columns:1fr}.v28-tabs{grid-template-columns:1fr 1fr}.v28-row{flex-direction:column}.v28-title{align-items:flex-start}.v28-hero{padding:13px}.v28-kpi{min-height:auto}}
 </style>
-<script id="oj-v28-service-intelligence-os">
+<script id="oj-v28-service-intelligence-os" type="text/plain" data-disabled-by-v55="preserved-not-auto-run">
 (function(){
   'use strict';
   if(window.__OJ_V28_SERVICE_INTELLIGENCE_OS__) return;
@@ -5194,7 +5203,7 @@ body.v29-polish .view{animation:v29Fade .22s ease-out}
 .v29-title{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}.v29-title h1,.v29-title h2{margin:0;color:#eaffff;letter-spacing:.2px}.v29-sub{font-size:.78rem;color:#aeb8d8;line-height:1.35;margin-top:4px}.v29-chip{display:inline-flex;align-items:center;gap:5px;border:1px solid rgba(97,247,255,.32);color:var(--v29-cyan);background:rgba(97,247,255,.08);border-radius:999px;padding:5px 9px;font-weight:900;font-size:.66rem;letter-spacing:.35px;text-transform:uppercase;white-space:nowrap}.v29-chip.pink{color:var(--v29-pink);border-color:rgba(255,79,184,.42);background:rgba(255,79,184,.08)}.v29-chip.green{color:var(--v29-green);border-color:rgba(118,255,156,.38);background:rgba(118,255,156,.08)}.v29-chip.amber{color:var(--v29-amber);border-color:rgba(255,209,102,.44);background:rgba(255,209,102,.09)}.v29-chip.red{color:var(--v29-red);border-color:rgba(255,93,122,.48);background:rgba(255,93,122,.1)}.v29-chip.blue{color:#8bb7ff;border-color:rgba(139,183,255,.42);background:rgba(139,183,255,.08)}
 .v29-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}.v29-grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px}.v29-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.v29-kpi{border:1px solid rgba(97,247,255,.24);background:rgba(255,255,255,.055);border-radius:17px;padding:12px;text-align:center}.v29-kpi b{display:block;color:#fff;font-size:1.35rem;text-shadow:0 0 16px rgba(97,247,255,.36)}.v29-kpi span{font-size:.66rem;color:#aeb8d8;text-transform:uppercase;letter-spacing:.4px}.v29-action{width:100%;border:1px solid rgba(97,247,255,.23);background:rgba(255,255,255,.055);color:#fff;border-radius:18px;padding:14px;text-align:left;min-height:104px;display:flex;flex-direction:column;justify-content:space-between;transition:.18s}.v29-action:active{transform:scale(.98)}.v29-action .ico{font-size:1.6rem}.v29-action b{font-size:.92rem}.v29-action small{font-size:.68rem;color:#aeb8d8;line-height:1.25}.v29-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:rgba(255,255,255,.045);margin:7px 0}.v29-row strong{display:block;color:#fff;font-size:.86rem}.v29-row small{display:block;color:#aeb8d8;font-size:.69rem;margin-top:3px}.v29-meter{height:10px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden}.v29-meter span{display:block;height:100%;background:linear-gradient(90deg,var(--v29-cyan),var(--v29-pink));box-shadow:0 0 18px rgba(97,247,255,.45)}.v29-tabbar{display:flex;gap:6px;overflow-x:auto;padding:4px 0 10px;scrollbar-width:none}.v29-tabbar::-webkit-scrollbar{display:none}.v29-tabbar button{white-space:nowrap;border-radius:999px;padding:8px 11px;font-size:.72rem;border:1px solid rgba(97,247,255,.25);background:rgba(255,255,255,.055);color:#dbffff}.v29-tabbar button.active{background:linear-gradient(135deg,var(--v29-cyan),var(--v29-pink));color:#061126;border:0;font-weight:900}.v29-card{border:1px solid rgba(97,247,255,.22);background:rgba(255,255,255,.055);border-radius:19px;padding:12px;margin-bottom:10px}.v29-flow{display:grid;gap:9px}.v29-step{position:relative;border-left:4px solid var(--v29-cyan);padding:10px 10px 10px 14px;border-radius:12px;background:rgba(255,255,255,.05)}.v29-step:before{content:attr(data-n);position:absolute;left:-13px;top:10px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--v29-cyan);color:#061126;font-size:.68rem;font-weight:900}.v29-table{overflow:auto;border-radius:14px;border:1px solid rgba(255,255,255,.08)}.v29-table table{width:100%;border-collapse:collapse;min-width:560px}.v29-table th,.v29-table td{padding:10px;border-bottom:1px solid rgba(255,255,255,.08);font-size:.78rem;text-align:left}.v29-table th{color:var(--v29-cyan);background:rgba(97,247,255,.08);position:sticky;top:0}.v29-radar{height:230px;border-radius:20px;border:1px solid rgba(97,247,255,.25);background:radial-gradient(circle at center,rgba(97,247,255,.16),transparent 18%),linear-gradient(90deg,rgba(97,247,255,.05) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),#041022;background-size:auto,28px 28px,28px 28px,auto;position:relative;overflow:hidden}.v29-radar:after{content:"";position:absolute;left:50%;top:50%;width:130%;height:130%;background:conic-gradient(from 0deg,rgba(97,247,255,.42),transparent 28%,transparent);transform-origin:0 0;animation:v29Scan 4.5s linear infinite}@keyframes v29Scan{to{transform:rotate(360deg)}}.v29-port{position:absolute;z-index:2;border:1px solid rgba(255,255,255,.25);background:rgba(4,16,34,.82);border-radius:999px;padding:5px 8px;font-size:.65rem;font-weight:900;color:#fff}.v29-port.hot{border-color:rgba(255,93,122,.75);color:#ff9bad;box-shadow:0 0 15px rgba(255,93,122,.35)}.v29-port.ok{border-color:rgba(118,255,156,.65);color:#aaffbf}.v29-spacer{height:22px}@media(max-width:720px){.v29-grid3{grid-template-columns:1fr 1fr}.v29-title{flex-direction:column}.v29-action{min-height:96px;padding:13px}.v29-row{align-items:flex-start}.v29-row button{align-self:center}.v29-kpi b{font-size:1.12rem}body.v29-polish input,body.v29-polish select,body.v29-polish textarea,body.v29-polish button{font-size:16px!important}}@media(max-width:390px){.v29-grid3{grid-template-columns:1fr}.v29-grid{grid-template-columns:1fr}.v29-table th,.v29-table td{padding:8px}}
 </style>
-<script id="v29PredictiveServiceOS">
+<script id="v29PredictiveServiceOS" type="text/plain" data-disabled-by-v55="preserved-not-auto-run">
 (function(){
   'use strict';
   if(window.__OJ_V29_PREDICTIVE_SERVICE_OS__) return;
@@ -5302,7 +5311,7 @@ body.v30-large-touch .card,body.v30-large-touch .v30-card{border-radius:22px!imp
 .v30-hero{min-height:250px;border:1px solid rgba(85,247,255,.25);border-radius:24px;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(5,14,31,.9),rgba(5,14,31,.65)),radial-gradient(circle at 30% 35%,rgba(85,247,255,.2),transparent 22%),radial-gradient(circle at 72% 58%,rgba(255,79,184,.2),transparent 25%)}.v30-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(85,247,255,.05) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px);background-size:30px 30px}.v30-orb{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--v30-cyan);box-shadow:0 0 16px var(--v30-cyan);animation:v30Drift 7s linear infinite}.v30-orb.o2{background:var(--v30-pink);box-shadow:0 0 16px var(--v30-pink);animation-duration:8.5s}.v30-orb.o3{background:var(--v30-green);box-shadow:0 0 16px var(--v30-green);animation-duration:9.5s}@keyframes v30Drift{0%{transform:translate(8px,210px)}50%{transform:translate(64vw,36px)}100%{transform:translate(8px,210px)}}.v30-hero-content{position:relative;z-index:2;padding:16px}.v30-search{display:flex;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(85,247,255,.26);border-radius:18px;padding:8px}.v30-search input{flex:1;border:0!important;background:transparent!important;box-shadow:none!important;color:#fff!important;min-width:0}.v30-receipt{border:1px dashed rgba(85,247,255,.45);border-radius:18px;padding:14px;background:rgba(255,255,255,.055);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.v30-qr{display:grid;grid-template-columns:repeat(9,9px);gap:2px;width:max-content;padding:7px;background:#fff;border-radius:8px;margin:8px 0}.v30-qr i{width:9px;height:9px;background:#0a1224;border-radius:1px}.v30-qr i.off{background:#fff}.v30-command-strip{display:flex;gap:8px;overflow-x:auto;padding:8px 0 2px}.v30-command-strip button{white-space:nowrap;border-radius:999px;padding:9px 12px;font-size:.73rem}.v30-floating-health{position:fixed;right:12px;bottom:12px;z-index:90;border:1px solid rgba(85,247,255,.32);background:rgba(5,14,31,.86);backdrop-filter:blur(14px);border-radius:999px;padding:8px 11px;color:#dfffff;font-size:.7rem;box-shadow:0 0 18px rgba(85,247,255,.15)}
 @media(max-width:700px){.v30-grid3{grid-template-columns:1fr}.v30-title{flex-direction:column}.v30-kpi{min-height:70px}.v30-action{min-height:98px}.v30-floating-health{left:12px;right:auto;bottom:10px}.v30-hero{min-height:280px}.v30-search{flex-direction:column}}
 </style>
-<script id="v30ServiceSuperAppScript">
+<script id="v30ServiceSuperAppScript" type="text/plain" data-disabled-by-v55="preserved-not-auto-run">
 (function(){
   if(window.__OCEANJET_V30_REAL__) return;
   window.__OCEANJET_V30_REAL__ = true;
@@ -5407,7 +5416,7 @@ body.v30-large-touch .card,body.v30-large-touch .v30-card{border-radius:22px!imp
   :root{--oj33-cyan:#4df5ff;--oj33-pink:#ff3b96;--oj33-green:#75ff9d;--oj33-amber:#ffd166;--oj33-bg:rgba(8,14,34,.88)}
   .oj33-shell{border:1px solid rgba(77,245,255,.32);background:radial-gradient(circle at 12% 0%,rgba(77,245,255,.16),transparent 36%),radial-gradient(circle at 90% 16%,rgba(255,59,150,.14),transparent 34%),var(--oj33-bg);border-radius:22px;box-shadow:0 0 30px rgba(77,245,255,.1);overflow:hidden}.oj33-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.oj33-head h2{margin:0;color:var(--oj33-cyan);font-size:1.08rem;letter-spacing:.3px}.oj33-sub{font-size:.76rem;color:#abb4d0;line-height:1.45}.oj33-chip{display:inline-flex;align-items:center;gap:4px;border-radius:999px;border:1px solid rgba(77,245,255,.35);background:rgba(77,245,255,.08);color:var(--oj33-cyan);padding:5px 8px;font-size:.66rem;font-weight:900;white-space:nowrap}.oj33-chip.good{color:#9affb0;border-color:rgba(117,255,157,.45);background:rgba(117,255,157,.08)}.oj33-chip.warn{color:#ffd166;border-color:rgba(255,209,102,.48);background:rgba(255,209,102,.08)}.oj33-chip.hot{color:#ff8ebf;border-color:rgba(255,59,150,.55);background:rgba(255,59,150,.09)}.oj33-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.oj33-card{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.055);border-radius:18px;padding:12px}.oj33-card b{display:block;color:#fff;font-size:1.08rem}.oj33-card small{display:block;color:#aab4d4;font-size:.72rem;margin-top:3px;line-height:1.35}.oj33-action{cursor:pointer;transition:.18s}.oj33-action:active{transform:scale(.985)}.oj33-action:hover{border-color:rgba(77,245,255,.55);box-shadow:0 0 20px rgba(77,245,255,.12)}.oj33-meter{height:8px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;margin-top:8px}.oj33-meter span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--oj33-cyan),var(--oj33-pink));width:40%}.oj33-row{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px;border-radius:15px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);margin:7px 0}.oj33-row strong{color:#fff}.oj33-row small{display:block;color:#aab4d4;font-size:.7rem}.oj33-input,.oj33-textarea,.oj33-select{width:100%;border:1px solid rgba(77,245,255,.24);background:rgba(255,255,255,.06);color:inherit;border-radius:14px;padding:12px;font-size:16px}.oj33-textarea{min-height:90px}.oj33-chat{max-height:360px;overflow:auto;display:flex;flex-direction:column;gap:8px}.oj33-msg{padding:10px 12px;border-radius:16px;line-height:1.42;font-size:.86rem}.oj33-user{align-self:flex-end;background:rgba(255,59,150,.16);border:1px solid rgba(255,59,150,.24)}.oj33-bot{align-self:flex-start;background:rgba(77,245,255,.11);border:1px solid rgba(77,245,255,.22)}.oj33-map{height:250px;border-radius:18px;border:1px solid rgba(77,245,255,.24);background:radial-gradient(circle at 18% 30%,rgba(77,245,255,.28) 0 3px,transparent 5px),radial-gradient(circle at 76% 26%,rgba(255,59,150,.25) 0 4px,transparent 6px),linear-gradient(135deg,#031021,#071733 45%,#020713);position:relative;overflow:hidden}.oj33-wave{position:absolute;inset:-40%;background:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 1px,transparent 1px 14px);animation:oj33waves 18s linear infinite}.oj33-route{position:absolute;height:2px;background:linear-gradient(90deg,transparent,var(--oj33-cyan),var(--oj33-pink),transparent);transform-origin:left center;opacity:.75}.oj33-ship{position:absolute;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--oj33-cyan),var(--oj33-pink));box-shadow:0 0 20px rgba(77,245,255,.6);animation:oj33float 6s ease-in-out infinite}.oj33-port{position:absolute;padding:4px 7px;border-radius:999px;background:rgba(0,0,0,.55);border:1px solid rgba(77,245,255,.34);font-size:.65rem;color:#fff}.oj33-fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:7000;border:1px solid rgba(77,245,255,.4);background:linear-gradient(135deg,rgba(77,245,255,.95),rgba(255,59,150,.95));color:#06101f;border-radius:999px;padding:10px 12px;font-weight:900;box-shadow:0 10px 30px rgba(0,0,0,.34)}@keyframes oj33waves{to{transform:translate(60px,40px)}}@keyframes oj33float{50%{transform:translateY(-8px) scale(1.04)}}@media(max-width:520px){.oj33-head{flex-direction:column}.oj33-grid{grid-template-columns:1fr 1fr}.oj33-card{padding:11px}.oj33-map{height:220px}.oj33-hide-mobile{display:none!important}.oj33-row{align-items:flex-start;flex-direction:column}}
 </style>
-<script id="ojV33VerifiedScript">
+<script id="ojV33VerifiedScript" type="text/plain" data-disabled-by-v55="preserved-not-auto-run">
 (function(){
   if(window.__OJ_V33_VERIFIED_REPAIR__) return; window.__OJ_V33_VERIFIED_REPAIR__ = 'V33_VERIFIED_REPAIR';
   const VERSION = 'V33 Verified Repair Upgrade';
@@ -6524,8 +6533,484 @@ body.oj45-ready .app{max-width:1200px;margin:0 auto;min-height:100dvh;padding:0 
   try{showView=open; navigate=window.navigate; buildDrawerMenu=buildDrawer; toggleDrawer=window.toggleDrawer; closeDrawer=window.closeDrawer; logout=window.oj52Logout;}catch(e){}
   window.oj52QuickOpen=function(){const q=($('oj52Quick')?.value||'').toLowerCase(); const map=[['bag','calculator'],['calc','calculator'],['claim','claim'],['damage','damage'],['scan','damage'],['fare','fares'],['sched','schedules'],['staff','staffcounter'],['counter','staffcounter'],['receipt','receipt'],['report','reports'],['admin','login-admin'],['cashier','login-cashier']]; const hit=map.find(x=>q.includes(x[0])); open(hit?hit[1]:'home');};
 
-  function boot(){document.body.classList.add('oj52-ready'); removeRecoveryRuntime(); setRole(getRole()); buildDrawer(); hideClutter(); renderHome(); [150,450,900,1600,3000,6000,10000,14000].forEach(ms=>setTimeout(()=>{removeRecoveryRuntime();buildDrawer();hideClutter();},ms)); if(!window.__OJ52_STABILITY_TICK__) window.__OJ52_STABILITY_TICK__=setInterval(()=>{removeRecoveryRuntime();hideClutter();},15000); console.log(VERSION+' loaded');}
+  function boot(){document.body.classList.add('oj52-ready'); removeRecoveryRuntime(); setRole(getRole()); buildDrawer(); hideClutter(); renderHome(); console.log(VERSION+' loaded without repeating recovery timers');}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true}); else boot();
+})();
+</script>
+
+
+
+<!-- V53 MAASIN ROUTE + DAMAGE SCANNER STABILITY FIX -->
+<style id="oj53Styles">
+  .oj53-note{border:1px solid rgba(83,235,255,.32);background:rgba(83,235,255,.08);border-radius:16px;padding:10px;margin:10px 0;color:var(--text2,#dbeafe);font-size:.82rem}
+  .oj53-note b{color:#67e8f9}.oj53-route-chip{display:inline-flex;gap:5px;align-items:center;border:1px solid rgba(52,211,153,.38);background:rgba(52,211,153,.08);color:#bbf7d0;border-radius:999px;padding:3px 8px;font-size:.68rem;font-weight:900;margin-left:5px}
+</style>
+<script id="oj53MaasinDamageFix" type="text/plain" data-disabled-by-v54="route-and-damage-replaced">
+(function(){
+  if(window.__OJ53_MAASIN_DAMAGE_FIX__) return;
+  window.__OJ53_MAASIN_DAMAGE_FIX__ = 'V53';
+
+  const ROUTES = [
+    ['cebu_tagbilaran','Cebu → Tagbilaran','Direct'],
+    ['cebu_maasin','Cebu → Maasin','Direct'],
+    ['cebu_surigao','Cebu → Surigao','via Maasin'],
+    ['cebu_siquijor','Cebu → Siquijor','via Tagbilaran'],
+    ['cebu_dumaguete','Cebu → Dumaguete','via Tagbilaran'],
+    ['cebu_ormoc','Cebu → Ormoc','Direct'],
+    ['cebu_palompon','Cebu → Palompon','Direct'],
+    ['cebu_getafe','Cebu → Getafe','Direct']
+  ];
+  const SLABS = {
+    cebu_tagbilaran:{normal:[15,25,30],fragile:[30,45,65]},
+    cebu_maasin:{normal:[20,27.5,32.5],fragile:[35,50,70]},
+    cebu_surigao:{normal:[30,35,40],fragile:[50,65,85]},
+    cebu_siquijor:{normal:[20,27.5,32.5],fragile:[35,50,70]},
+    cebu_dumaguete:{normal:[25,30,35],fragile:[40,55,75]},
+    cebu_ormoc:{normal:[20,27.5,32.5],fragile:[35,50,70]},
+    cebu_palompon:{normal:[20,27.5,32.5],fragile:[35,50,70]},
+    cebu_getafe:{normal:[10,20,25],fragile:[25,40,60]}
+  };
+  const PAX = {
+    cebu_tagbilaran:{'TC/OA':1000,'BC':1560,'ST':800,'MI':500},
+    cebu_maasin:{'TC/OA':1430,'BC':1950,'ST':1144,'MI':715},
+    cebu_surigao:{'TC/OA':2470,'BC':3510,'ST':1976,'MI':1235},
+    cebu_siquijor:{'TC/OA':2000,'BC':3120,'ST':1600,'MI':1000},
+    cebu_dumaguete:{'TC/OA':2170,'BC':3380,'ST':1736,'MI':1085},
+    cebu_ormoc:{'TC/OA':1430,'BC':1950,'ST':1144,'MI':715},
+    cebu_palompon:{'TC/OA':1430,'BC':1950,'ST':1144,'MI':715},
+    cebu_getafe:{'TC/OA':585,'BC':1040,'ST':468,'MI':292.5}
+  };
+  const SCHED = {
+    cebu_maasin:{title:'Cebu to Maasin',travel:'3h',trips:[{dep:'7:00am',vessel:'OJ 03',arr:'10:00am',remarks:'Direct Maasin service'}]},
+    maasin_cebu:{title:'Maasin to Cebu',travel:'3h',trips:[{dep:'3:30pm',vessel:'OJ 03',arr:'6:30pm',remarks:'Direct Cebu return'}]},
+    maasin_surigao:{title:'Maasin to Surigao',travel:'2h',trips:[{dep:'10:30am',vessel:'OJ 388',arr:'12:30pm',remarks:'Connecting leg for Cebu to Surigao'}]},
+    cebu_surigao:{title:'Cebu to Surigao',travel:'5h 30m',trips:[{dep:'7:00am',vessel:'OJ 03 + OJ 388',arr:'12:30pm',remarks:'Via Maasin'}]}
+  };
+
+  const $ = id => document.getElementById(id);
+  function toast53(msg){try{if(typeof window.toast==='function') return window.toast(msg);}catch(e){} console.log('[V53]',msg);}
+
+  function ensureRouteData(){
+    try{
+      window.DB = window.DB || (typeof DB!=='undefined'?DB:null);
+      if(!window.DB) return;
+      DB.slabs = DB.slabs || {}; DB.paxFares = DB.paxFares || {}; DB.schedules = DB.schedules || {};
+      ROUTES.forEach(([k])=>{
+        if(!DB.slabs[k]) DB.slabs[k] = JSON.parse(JSON.stringify(SLABS[k]));
+        if(!DB.paxFares[k]) DB.paxFares[k] = Object.assign({},PAX[k]);
+      });
+      Object.keys(SCHED).forEach(k=>{ if(!DB.schedules[k]) DB.schedules[k]=JSON.parse(JSON.stringify(SCHED[k])); });
+      if(typeof saveDB==='function') saveDB();
+    }catch(e){console.warn('V53 route data ensure skipped',e);}
+  }
+
+  function ensureCalcRoutes(){
+    ensureRouteData();
+    const sel = $('calcRoute'); if(!sel) return;
+    const current = ROUTES.some(r=>r[0]===sel.value) ? sel.value : 'cebu_tagbilaran';
+    sel.innerHTML = ROUTES.map(([k,label,type])=>'<option value="'+k+'">'+label+(type==='Direct'?'':' ('+type+')')+'</option>').join('');
+    sel.value = current;
+    if(!$('oj53CalcNote')){
+      const note = document.createElement('div');
+      note.id = 'oj53CalcNote'; note.className = 'oj53-note';
+      note.innerHTML = '<b>V53 route fix:</b> Cebu → Maasin is now a direct baggage-calculator route. Cebu → Surigao remains <b>via Maasin</b> for the combined route.';
+      const group = sel.closest('.input-group'); if(group) group.insertAdjacentElement('afterend', note);
+    }
+  }
+
+  function patchComputeGuard(){
+    const old = window.compute;
+    if(typeof old !== 'function' || old.__oj53Guarded) return;
+    window.compute = function(){ ensureRouteData(); ensureCalcRoutes(); return old.apply(this, arguments); };
+    window.compute.__oj53Guarded = true;
+    try{ compute = window.compute; }catch(e){}
+  }
+
+  function patchCalculatorBuilder(){
+    const old = window.buildCalculator;
+    if(typeof old === 'function' && !old.__oj53Wrapped){
+      window.buildCalculator = function(){ const out = old.apply(this, arguments); setTimeout(ensureCalcRoutes,0); setTimeout(ensureCalcRoutes,80); return out; };
+      window.buildCalculator.__oj53Wrapped = true;
+      try{ buildCalculator = window.buildCalculator; }catch(e){}
+    }
+  }
+
+  function openEvidenceStudio(){
+    try{ if(typeof window.oj47Open==='function'){ window.oj47Open('ar'); return true; } }catch(e){ console.warn('V53 oj47Open fallback',e); }
+    return false;
+  }
+
+  function patchDamageOpeners(){
+    const oldOpen = window.oj52Open || window.showView;
+    if(typeof oldOpen === 'function' && !oldOpen.__oj53Wrapped){
+      const wrapped = function(target){
+        const t = String(target||'home').replace(/^view-/,'').toLowerCase();
+        if(['damage','scanner','camera','evidence','ar'].includes(t)){
+          if(openEvidenceStudio()) return;
+        }
+        const out = oldOpen.apply(this, arguments);
+        if(t==='calculator') setTimeout(ensureCalcRoutes,120);
+        return out;
+      };
+      wrapped.__oj53Wrapped = true;
+      window.oj52Open = wrapped;
+      window.showView = wrapped;
+      try{ showView = wrapped; }catch(e){}
+    }
+    const oldNav = window.navigate;
+    if(typeof oldNav === 'function' && !oldNav.__oj53Wrapped){
+      window.navigate = function(target){
+        const t=String(target||'').replace(/^view-/,'').toLowerCase();
+        if(['damage','scanner','camera','evidence','ar'].includes(t)){
+          try{ if(typeof closeDrawer==='function') closeDrawer(); }catch(e){}
+          if(openEvidenceStudio()) return;
+        }
+        const out = oldNav.apply(this, arguments);
+        if(t==='calculator') setTimeout(ensureCalcRoutes,120);
+        return out;
+      };
+      window.navigate.__oj53Wrapped = true;
+      try{ navigate = window.navigate; }catch(e){}
+    }
+  }
+
+  function patchDrawerLabels(){
+    const box = $('drawerMenu'); if(!box) return;
+    Array.from(box.querySelectorAll('.drawer-item')).forEach(el=>{
+      const v=(el.dataset.view||'').toLowerCase(); const txt=(el.textContent||'').toLowerCase();
+      if(v==='damage' || v==='ar' || txt.includes('damage scanner')){
+        el.dataset.view='damage';
+        el.onclick=function(){ if(typeof window.oj52Open==='function') window.oj52Open('damage'); else openEvidenceStudio(); };
+        if(el.classList.contains('oj52-menu')){
+          el.innerHTML='<i>📹</i><span><b>Damage Scanner</b><small>Manual camera + paired batch upload</small></span>';
+        }
+      }
+    });
+  }
+
+  function patchDrawerBuilder(){
+    const old = window.buildDrawerMenu;
+    if(typeof old === 'function' && !old.__oj53Wrapped){
+      window.buildDrawerMenu = function(){ const out = old.apply(this, arguments); patchDrawerLabels(); return out; };
+      window.buildDrawerMenu.__oj53Wrapped = true;
+      try{ buildDrawerMenu = window.buildDrawerMenu; }catch(e){}
+    }
+  }
+
+  function boot(){
+    ensureRouteData(); patchComputeGuard(); patchCalculatorBuilder(); patchDamageOpeners(); patchDrawerBuilder(); ensureCalcRoutes(); patchDrawerLabels();
+    [150,500,1000,2500].forEach(ms=>setTimeout(()=>{ensureCalcRoutes(); patchDrawerLabels();},ms));
+    document.title='OceanJet Command V55 System UI';
+    toast53('V53 Maasin route and stable damage scanner loaded.');
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot,{once:true}); else boot();
+})();
+</script>
+
+
+
+<!-- V53B STABLE DAMAGE SCANNER: MANUAL CAMERA + PAIRED BATCH UPLOAD -->
+<style id="oj53ScannerStyles">
+  .oj53-page{padding:14px 12px 36px}.oj53-hero,.oj53-card{border:1px solid rgba(83,235,255,.28);background:linear-gradient(135deg,rgba(15,23,42,.88),rgba(30,41,59,.58));border-radius:22px;padding:14px;margin-bottom:12px;box-shadow:0 14px 42px rgba(0,0,0,.28)}
+  .oj53-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.oj53-head h2{margin:0;color:#e0fbff}.oj53-sub{color:var(--text3,#94a3b8);font-size:.82rem;margin-top:4px}.oj53-pill{border:1px solid rgba(52,211,153,.42);background:rgba(52,211,153,.1);color:#bbf7d0;border-radius:999px;padding:5px 9px;font-size:.68rem;font-weight:950;white-space:nowrap}.oj53-pill.warn{border-color:rgba(250,204,21,.45);background:rgba(250,204,21,.1);color:#fde68a}.oj53-pill.bad{border-color:rgba(248,113,113,.45);background:rgba(248,113,113,.1);color:#fecaca}
+  .oj53-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.oj53-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.oj53-kpi{border:1px solid rgba(255,255,255,.08);background:rgba(2,6,23,.42);border-radius:16px;padding:10px;text-align:center}.oj53-kpi b{display:block;color:#67e8f9;font-size:1.18rem}.oj53-kpi span{font-size:.62rem;color:var(--text3,#94a3b8);text-transform:uppercase;font-weight:900}
+  .oj53-camera{position:relative;min-height:260px;background:#020617;border:1px solid rgba(83,235,255,.3);border-radius:18px;overflow:hidden}.oj53-camera video,.oj53-camera canvas{width:100%;min-height:260px;object-fit:cover;display:block}.oj53-camera canvas{display:none}.oj53-frame{position:absolute;left:12%;right:12%;top:16%;bottom:18%;border:2px solid rgba(83,235,255,.78);border-radius:22px;box-shadow:0 0 22px rgba(83,235,255,.25);pointer-events:none}.oj53-empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#94a3b8;text-align:center;padding:18px;background:linear-gradient(135deg,#020617,#111827)}
+  .oj53-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.oj53-tools button,.oj53-btn{border-radius:14px;padding:10px 12px}.oj53-preview{min-height:145px;border:1px dashed rgba(83,235,255,.28);border-radius:16px;padding:8px;background:rgba(2,6,23,.35);color:#94a3b8;overflow:hidden}.oj53-preview b{display:block;color:#dffbff;margin-bottom:6px}.oj53-preview img{width:100%;max-height:180px;object-fit:cover;border-radius:12px;display:block}.oj53-note2{border:1px solid rgba(83,235,255,.25);background:rgba(83,235,255,.08);border-radius:16px;padding:10px;color:var(--text2,#dbeafe);font-size:.82rem}.oj53-upload{border:1px dashed rgba(52,211,153,.36);background:rgba(52,211,153,.08);border-radius:18px;padding:14px;text-align:center}.oj53-row{display:flex;justify-content:space-between;gap:10px;align-items:center;border:1px solid rgba(255,255,255,.08);background:rgba(2,6,23,.36);border-radius:14px;padding:10px;margin-top:8px}.oj53-row small{display:block;color:#94a3b8;margin-top:3px}.oj53-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.oj53-pair img{width:100%;height:120px;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.08)}
+  @media(max-width:650px){.oj53-grid2,.oj53-grid3,.oj53-tools{grid-template-columns:1fr}.oj53-head{display:block}.oj53-pill{display:inline-block;margin-top:8px}.oj53-camera,.oj53-camera video,.oj53-camera canvas{min-height:230px}.oj53-pair{grid-template-columns:1fr}}
+</style>
+<script id="oj53StableDamageScanner" type="text/plain" data-disabled-by-v54="replaced-by-oj54-clean-evidence-studio">
+(function(){
+  if(window.__OJ53_STABLE_DAMAGE_SCANNER__) return;
+  window.__OJ53_STABLE_DAMAGE_SCANNER__='V53B';
+  const DAMAGE_KEY='oj45_damage_evidence', V11_KEY='oj_damage_master_v11_backup';
+  const DESTS=['PALOMPON','GETAFE','SURIGAO','MAASIN','TAGBILARAN','SIQUIJOR','ORMOC','DUMAGUETE'];
+  const TYPES=['Inspection','Crack/Split','Broken Handle','Wheel Damage','Scratch/Scuff','Dent/Deformation','Torn Fabric','Zipper Damage','Wet Damage','Missing Part','Lost Baggage','Other'];
+  const SEV=['Minor','Moderate','Severe','Critical'];
+  const $=id=>document.getElementById(id);
+  const qsa=(s,r=document)=>Array.from(r.querySelectorAll(s));
+  const esc=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  const now=()=>new Date().toLocaleString('en-PH',{timeZone:'Asia/Manila',hour12:true});
+  const today=()=>new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Manila'});
+  const uid=p=>p+'-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
+  const read=(k,f)=>{try{return JSON.parse(localStorage.getItem(k)||'null')??f}catch(e){return f}};
+  const write=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){toast('Storage full. Export backup then clear old photos.');return false}};
+  const toast=m=>{try{if(typeof window.toast==='function')return window.toast(m)}catch(e){} let t=$('oj53ScanToast'); if(!t){t=document.createElement('div');t.id='oj53ScanToast';t.className='oj52-toast';document.body.appendChild(t)} t.textContent=m;t.classList.add('show');clearTimeout(t._timer);t._timer=setTimeout(()=>t.classList.remove('show'),2200)};
+  let stream=null, stub=null, damage=null, batchPairs=[];
+  function activate(){let v=$('view-damage'); if(!v){v=document.createElement('div');v.id='view-damage';v.className='view';(document.querySelector('.app')||document.body).appendChild(v)} qsa('.view').forEach(x=>x.classList.remove('active')); v.classList.add('active'); try{if(typeof closeDrawer==='function')closeDrawer()}catch(e){} try{scrollTo({top:0,behavior:'smooth'})}catch(e){scrollTo(0,0)} return v;}
+  function opts(arr,sel){return arr.map(x=>'<option '+(x===sel?'selected':'')+'>'+esc(x)+'</option>').join('')}
+  function photoQuality(a,b){return Math.min(100,(a?45:0)+(b?45:0)+(a&&b?10:0))}
+  function records(){let a=read(DAMAGE_KEY,[]);return Array.isArray(a)?a:[]}
+  function master(){let v=read(V11_KEY,{cases:[],batches:[],nextCaseSeq:1,nextBatchSeq:1,settings:{}}); if(!v||typeof v!=='object'||Array.isArray(v))v={cases:[],batches:[],nextCaseSeq:1,nextBatchSeq:1,settings:{}}; if(!Array.isArray(v.cases))v.cases=[]; if(!Array.isArray(v.batches))v.batches=[]; return v}
+  function dataUrlQuality(u){return u?Math.min(95,Math.max(60,Math.round(String(u).length/28000))):0}
+  function buildCase(pairNo,src,stb,dmg,names){const dest=$('oj53Dest')?.value||'PALOMPON', type=$('oj53DamageType')?.value||'Inspection', sev=$('oj53Severity')?.value||'Minor'; const tag=($('oj53Tag')?.value||'').trim(); const staff=($('oj53Staff')?.value||'Dock Staff').trim(); const claimId=($('oj53ClaimId')?.value||'').trim(); const notes=($('oj53Notes')?.value||'').trim(); const id='OJ-DMG-'+Date.now().toString().slice(-6)+'-'+String(pairNo||1).padStart(2,'0'); const photos=[]; if(stb)photos.push({photoId:uid('P'),role:'Claim Stub',dataUrl:stb,quality:dataUrlQuality(stb),autoCaptured:false,createdAt:now(),filename:names?.stubName||''}); if(dmg)photos.push({photoId:uid('P'),role:'Damage Close-up',dataUrl:dmg,quality:dataUrlQuality(dmg),autoCaptured:false,createdAt:now(),filename:names?.damageName||''}); return {id,caseId:id,claimId,batchId:src.batchId||'',pairNo,createdAt:now(),date:today(),destination:dest,tagNo:tag,tag,staff,source:src.source||'V53 Stable Damage Scanner',damageType:type,severity:sev,status:'New',quality:photoQuality(stb,dmg),notes,photo:dmg||stb||'',photos,color:'Unknown',size:'Unknown',baggageType:'Unknown baggage',workflow:'Claim Stub + Damage Image pair',summary:id+' • '+dest+' • '+type+' • '+sev};}
+  function saveCases(cases,batchId,source){cases=(cases||[]).filter(Boolean); if(!cases.length)return false; const seen=new Set(); const ev=[...cases,...records()].filter(x=>{const id=String(x.caseId||x.id||''); if(!id)return true; if(seen.has(id))return false; seen.add(id); return true}).slice(0,240); write(DAMAGE_KEY,ev); const v=master(); const vCases=cases.map(c=>({caseId:c.caseId,batchId:batchId||c.batchId,destination:c.destination,tagNo:c.tagNo,color:'Unknown',size:'Unknown',baggageType:'Unknown baggage',damageType:c.damageType,aiSuggestion:c.damageType,aiConfidence:'V53 stable manual / paired batch evidence',severity:c.severity,status:'New',dateTaken:today(),timeTaken:new Date().toLocaleTimeString('en-PH',{hour12:true}),phtTimestamp:now(),notes:c.notes||'V53 paired evidence: claim stub + damage image.',photos:(c.photos||[]).map(p=>({photoId:p.photoId,role:p.role,dataUrl:p.dataUrl,autoCaptured:false,hash:String((p.dataUrl||'').length)+'-'+c.caseId,quality:p.quality||80,createdAt:p.createdAt})),locked:false,chainOfCustody:[{at:now(),event:'Created by V53 Stable Damage Scanner',by:c.staff||'Dock Staff'}],evidenceScore:c.quality,summary:c.summary})); v.cases=[...vCases,...v.cases].slice(0,240); v.batches.unshift({batchId:batchId||('BATCH-'+Date.now()),createdAt:now(),caseIds:cases.map(c=>c.caseId),source:source||'V53 Stable Damage Scanner'}); v.batches=v.batches.slice(0,100); write(V11_KEY,v); return true;}
+  function renderPreviews(){const sp=$('oj53StubPreview'), dp=$('oj53DamagePreview'), meter=$('oj53PairMeter'), txt=$('oj53PairText'); if(sp)sp.innerHTML='<b>Claim Stub / Tag</b>'+(stub?'<img src="'+stub+'" alt="Claim stub">':'No claim stub captured/uploaded'); if(dp)dp.innerHTML='<b>Damage Image</b>'+(damage?'<img src="'+damage+'" alt="Damage photo">':'No damage photo captured/uploaded'); const q=photoQuality(stub,damage); if(meter)meter.style.width=q+'%'; if(txt)txt.textContent='Pair completeness: '+q+'% '+(q>=100?'Ready to save':'Capture/upload stub and damage image');}
+  function renderRecent(){const box=$('oj53Recent'); if(!box)return; const rows=records().slice(0,8); box.innerHTML=rows.length?rows.map(x=>'<div class="oj53-row"><div><b>'+esc(x.caseId||x.id)+'</b><small>'+esc(x.destination||'')+' • '+esc(x.damageType||'Inspection')+' • '+esc(x.severity||'Minor')+'<br>'+((x.photos||[]).length)+' photo(s) • '+esc(x.source||'V53')+'</small></div><span class="oj53-pill '+((x.quality||0)>=90?'':(x.quality||0)>=45?'warn':'bad')+'">'+(x.quality||0)+'%</span></div>').join(''):'<div class="oj53-note2">No saved evidence yet.</div>';}
+  function status(msg,kind){const el=$('oj53ScanStatus'); if(el){el.className='oj53-note2 '+(kind||''); el.innerHTML=msg;} }
+  function renderBatchReview(){const out=$('oj53BatchReview'); if(!out)return; if(!batchPairs.length){out.innerHTML='<div class="oj53-note2">No batch selected yet.</div>';return} out.innerHTML=batchPairs.map(p=>'<div class="oj53-card"><b>Pair '+p.pairNo+'</b><small class="oj53-sub">'+esc(p.stubName||'Photo '+((p.pairNo*2)-1))+' + '+esc(p.damageName||'Photo '+(p.pairNo*2))+'</small><div class="oj53-pair">'+(p.stub?'<img src="'+p.stub+'" alt="stub">':'<div class="oj53-preview">Missing stub</div>')+(p.damage?'<img src="'+p.damage+'" alt="damage">':'<div class="oj53-preview">Missing damage - for review</div>')+'</div></div>').join('')+'<button class="primary block" onclick="oj53SaveBatch()">Save '+batchPairs.length+' Pair(s)</button>';}
+  async function resize(file){return new Promise((resolve,reject)=>{const r=new FileReader(); r.onerror=reject; r.onload=e=>{const img=new Image(); img.onerror=()=>resolve(e.target.result); img.onload=()=>{let w=img.width,h=img.height,max=1200;if(w>max){h=Math.round(h*max/w);w=max} const c=document.createElement('canvas'); c.width=Math.max(1,w); c.height=Math.max(1,h); c.getContext('2d').drawImage(img,0,0,c.width,c.height); resolve(c.toDataURL('image/jpeg',.76))}; img.src=e.target.result}; r.readAsDataURL(file)});}
+  window.oj53OpenDamage=function(){const v=activate(); const ev=records(); v.innerHTML='<div class="oj53-page"><div class="oj53-hero"><div class="oj53-head"><div><h2>Damage Scanner V53</h2><div class="oj53-sub">Stable manual capture only. Auto-capture is not used. Batch upload organizes images as 1-2, 3-4, 5-6: Claim Stub + Damage Image.</div></div><span class="oj53-pill">No auto scanner</span></div><div class="oj53-grid3" style="margin-top:12px"><div class="oj53-kpi"><b>'+ev.length+'</b><span>Evidence</span></div><div class="oj53-kpi"><b>'+ev.filter(x=>/critical|severe/i.test(x.severity||'')).length+'</b><span>Urgent</span></div><div class="oj53-kpi"><b>'+ev.reduce((a,x)=>a+(x.photos?.length||0),0)+'</b><span>Photos</span></div></div></div><div id="oj53ScanStatus" class="oj53-note2">Ready. Start camera or use upload fallback.</div><div class="oj53-grid2"><div class="oj53-card"><h3>📷 Manual Camera</h3><div class="oj53-camera"><div class="oj53-empty" id="oj53EmptyCam">Start camera, then capture Claim Stub and Damage Image.</div><video id="oj53Video" autoplay playsinline muted></video><canvas id="oj53Canvas"></canvas><div class="oj53-frame"></div></div><div class="oj53-tools" style="margin-top:10px"><button class="primary" onclick="oj53StartCamera()">Start Camera</button><button onclick="oj53StopCamera()">Stop</button><button class="accent" onclick="oj53CaptureStub()">Capture Stub</button><button class="accent" onclick="oj53CaptureDamage()">Capture Damage</button><button onclick="document.getElementById(\'oj53StubInput\').click()">Upload Stub</button><button onclick="document.getElementById(\'oj53DamageInput\').click()">Upload Damage</button><button class="danger" onclick="oj53ClearPair()">Clear Pair</button><button class="primary" onclick="oj53SavePair()">Save Pair</button></div><input id="oj53StubInput" type="file" accept="image/*" style="display:none" onchange="oj53UploadOne(this,\'stub\')"><input id="oj53DamageInput" type="file" accept="image/*" style="display:none" onchange="oj53UploadOne(this,\'damage\')"></div><div class="oj53-card"><h3>🧾 Evidence Details</h3><div class="grid2"><div class="input-group"><label>Destination</label><select id="oj53Dest">'+opts(DESTS,'MAASIN')+'</select></div><div class="input-group"><label>Tag / Stub No.</label><input id="oj53Tag" placeholder="e.g. OJ-68403"></div><div class="input-group"><label>Claim ID / PSN</label><input id="oj53ClaimId" placeholder="Optional link"></div><div class="input-group"><label>Staff / Shift</label><input id="oj53Staff" value="Dock Staff"></div><div class="input-group"><label>Damage Type</label><select id="oj53DamageType">'+opts(TYPES,'Inspection')+'</select></div><div class="input-group"><label>Severity</label><select id="oj53Severity">'+opts(SEV,'Minor')+'</select></div></div><div class="input-group"><label>Notes</label><textarea id="oj53Notes" rows="3" placeholder="Describe damaged part, passenger remarks, or staff observation"></textarea></div><div class="oj53-grid2"><div id="oj53StubPreview" class="oj53-preview"></div><div id="oj53DamagePreview" class="oj53-preview"></div></div><div style="height:8px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden;margin-top:10px"><span id="oj53PairMeter" style="display:block;height:100%;width:0%;background:linear-gradient(90deg,#f87171,#facc15,#34d399)"></span></div><div id="oj53PairText" class="oj53-sub">Pair completeness: 0%</div></div></div><div class="oj53-card"><h3>📥 Paired Batch Upload</h3><div class="oj53-upload"><p class="oj53-sub" style="margin-top:0">Choose many photos in order: <b>1 claim stub + 2 damage image</b>, then <b>3 + 4</b>, <b>5 + 6</b>. Odd last photo is allowed but marked for review.</p><input id="oj53BatchInput" type="file" accept="image/*" multiple onchange="oj53BatchSelect(this)"><button class="primary oj53-btn" onclick="document.getElementById(\'oj53BatchInput\').click()">Choose Batch Images</button></div><div id="oj53BatchProgress" class="oj53-sub" style="margin-top:8px">Waiting for selected images.</div><div id="oj53BatchReview" style="margin-top:10px"></div></div><div class="oj53-card"><h3>🗂 Recent Evidence</h3><div id="oj53Recent"></div></div></div>'; renderPreviews(); renderBatchReview(); renderRecent(); document.title='OceanJet V53 Damage Scanner';};
+  window.oj53StartCamera=async function(){try{window.oj53StopCamera(); if(!navigator.mediaDevices?.getUserMedia)throw new Error('Camera API unavailable'); stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:720}},audio:false}); const v=$('oj53Video'); v.srcObject=stream; await v.play(); const e=$('oj53EmptyCam'); if(e)e.style.display='none'; status('Camera active. Capture Claim Stub first, then Damage Image.','good')}catch(e){status('Camera unavailable/blocked. Use Upload Stub, Upload Damage, or Batch Upload.','warn'); toast('Upload fallback ready')}};
+  window.oj53StopCamera=function(){try{if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}}catch(e){} const v=$('oj53Video'); if(v)v.srcObject=null; const e=$('oj53EmptyCam'); if(e)e.style.display='flex'};
+  function snap(){const v=$('oj53Video'), c=$('oj53Canvas'); if(!v||v.readyState<2){toast('Start camera first or use upload.');return ''} c.width=v.videoWidth||1280; c.height=v.videoHeight||720; c.getContext('2d').drawImage(v,0,0,c.width,c.height); return c.toDataURL('image/jpeg',.76)}
+  window.oj53CaptureStub=function(){const u=snap(); if(!u)return; stub=u; renderPreviews(); status('Claim Stub captured. Now capture/upload Damage Image.','good')};
+  window.oj53CaptureDamage=function(){const u=snap(); if(!u)return; damage=u; renderPreviews(); status('Damage Image captured. Save Pair when ready.','good')};
+  window.oj53UploadOne=async function(input,kind){const f=input.files?.[0]; if(!f)return; const u=await resize(f); if(kind==='stub')stub=u; else damage=u; renderPreviews(); status((kind==='stub'?'Claim Stub':'Damage Image')+' uploaded.','good'); input.value=''};
+  window.oj53ClearPair=function(){stub=null;damage=null;renderPreviews();status('Pair cleared.','warn')};
+  window.oj53SavePair=function(){if(!stub&&!damage){toast('Capture or upload at least one image first.');return} const batchId='PAIR-'+today().replaceAll('-','')+'-'+Date.now().toString(36).slice(-4).toUpperCase(); const c=buildCase(1,{batchId,source:'V53 Manual Pair'},stub,damage,{}); saveCases([c],batchId,'V53 manual pair'); stub=null;damage=null;renderPreviews();renderRecent();status('<b>'+esc(c.caseId)+'</b> saved to evidence log and master log.','good');toast('Evidence pair saved')};
+  window.oj53BatchSelect=async function(input){const files=[...(input.files||[])].filter(f=>f.type&&f.type.startsWith('image/')); if(!files.length){toast('No images selected.');return} batchPairs=[]; const progress=$('oj53BatchProgress'); if(progress)progress.textContent='Compressing '+files.length+' image(s)...'; const urls=[]; for(let i=0;i<files.length;i++){if(progress)progress.textContent='Compressing '+(i+1)+' of '+files.length+': '+files[i].name; urls.push(await resize(files[i]));} for(let i=0;i<urls.length;i+=2){batchPairs.push({pairNo:Math.floor(i/2)+1,stub:urls[i]||'',damage:urls[i+1]||'',stubName:files[i]?.name||'',damageName:files[i+1]?.name||''})} if(progress)progress.textContent='Batch ready: '+batchPairs.length+' pair(s). Review then save.'; renderBatchReview(); input.value=''};
+  window.oj53SaveBatch=function(){if(!batchPairs.length){toast('Choose batch images first.');return} const batchId='BATCH-'+today().replaceAll('-','')+'-'+Date.now().toString(36).slice(-5).toUpperCase(); const cases=batchPairs.map(p=>buildCase(p.pairNo,{batchId,source:'V53 Paired Batch Upload'},p.stub,p.damage,p)); saveCases(cases,batchId,'V53 paired batch upload'); batchPairs=[]; renderBatchReview(); renderRecent(); status('<b>'+esc(batchId)+'</b> saved with '+cases.length+' case(s).','good'); toast('Batch saved to master log')};
+  function patchOpeners(){const old=window.oj52Open||window.showView; window.oj52Open=function(target){const t=String(target||'home').replace(/^view-/,'').toLowerCase(); if(['damage','scanner','camera','evidence','ar'].includes(t)){return window.oj53OpenDamage()} return old?old.apply(this,arguments):undefined}; window.showView=window.oj52Open; try{showView=window.oj52Open}catch(e){} const oldNav=window.navigate; window.navigate=function(target){const t=String(target||'').replace(/^view-/,'').toLowerCase(); if(['damage','scanner','camera','evidence','ar'].includes(t)){return window.oj53OpenDamage()} return oldNav?oldNav.apply(this,arguments):window.oj52Open(target)}; try{navigate=window.navigate}catch(e){} }
+  function patchDrawer(){const box=$('drawerMenu'); if(!box)return; qsa('.drawer-item',box).forEach(el=>{const t=(el.dataset.view||'').toLowerCase(), txt=(el.textContent||'').toLowerCase(); if(t==='damage'||t==='ar'||txt.includes('damage scanner')){el.dataset.view='damage';el.onclick=function(){window.oj53OpenDamage()}; if(el.classList.contains('oj52-menu'))el.innerHTML='<i>📹</i><span><b>Damage Scanner</b><small>Manual camera + paired batch</small></span>'}})}
+  const oldBuild=window.buildDrawerMenu; if(typeof oldBuild==='function'){window.buildDrawerMenu=function(){const r=oldBuild.apply(this,arguments); patchDrawer(); return r}; try{buildDrawerMenu=window.buildDrawerMenu}catch(e){}}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{patchOpeners();patchDrawer();setTimeout(patchDrawer,500)},{once:true}); else {patchOpeners();patchDrawer();setTimeout(patchDrawer,500)}
+})();
+</script>
+
+
+
+<!-- V54 CLEAN DAMAGE EVIDENCE STUDIO + MAASIN ROUTE FINAL LAYER -->
+<style id="oj54CleanEvidenceStyles">
+  :root{--oj54-cyan:#5ee8ff;--oj54-blue:#4487ff;--oj54-green:#34d399;--oj54-gold:#facc15;--oj54-red:#fb7185;--oj54-bg:rgba(8,15,35,.78);--oj54-line:rgba(94,232,255,.22);--oj54-text:#ecfeff;--oj54-muted:#a9bdd4}
+  .oj54-page{padding:12px 12px 88px;display:grid;gap:12px;color:var(--oj54-text)}
+  .oj54-hero,.oj54-card{border:1px solid var(--oj54-line);background:linear-gradient(145deg,rgba(6,12,30,.92),rgba(12,24,58,.72));box-shadow:0 14px 40px rgba(0,0,0,.26),inset 0 0 30px rgba(94,232,255,.035);border-radius:22px;padding:14px;overflow:hidden}
+  .oj54-hero{position:relative}.oj54-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.oj54-head h2{margin:0;font-size:1.13rem;letter-spacing:.2px}.oj54-sub{color:var(--oj54-muted);font-size:.8rem;line-height:1.45;margin-top:5px}.oj54-pill{display:inline-flex;align-items:center;gap:5px;border:1px solid rgba(94,232,255,.35);background:rgba(94,232,255,.09);color:var(--oj54-cyan);border-radius:999px;padding:5px 8px;font-size:.65rem;font-weight:950;text-transform:uppercase;white-space:nowrap}.oj54-pill.good{color:var(--oj54-green);border-color:rgba(52,211,153,.4);background:rgba(52,211,153,.09)}.oj54-pill.warn{color:var(--oj54-gold);border-color:rgba(250,204,21,.42);background:rgba(250,204,21,.08)}.oj54-pill.bad{color:var(--oj54-red);border-color:rgba(251,113,133,.45);background:rgba(251,113,133,.08)}
+  .oj54-grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}.oj54-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.oj54-kpi{border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.045);border-radius:16px;padding:10px;text-align:center}.oj54-kpi b{display:block;font-size:1.05rem;color:#fff}.oj54-kpi span{color:var(--oj54-muted);font-size:.65rem;text-transform:uppercase;letter-spacing:.3px}.oj54-status{border:1px solid rgba(94,232,255,.25);background:rgba(94,232,255,.07);border-radius:16px;padding:10px;color:#dffbff;font-size:.8rem}.oj54-status.good{border-color:rgba(52,211,153,.35);background:rgba(52,211,153,.08)}.oj54-status.warn{border-color:rgba(250,204,21,.38);background:rgba(250,204,21,.08)}.oj54-status.bad{border-color:rgba(251,113,133,.42);background:rgba(251,113,133,.08)}
+  .oj54-card h3{margin:0 0 10px;font-size:.98rem}.oj54-camera{position:relative;min-height:230px;border:1px dashed rgba(94,232,255,.35);border-radius:20px;background:radial-gradient(circle at top,rgba(94,232,255,.08),rgba(0,0,0,.22));display:grid;place-items:center;overflow:hidden}.oj54-camera video,.oj54-camera canvas{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}.oj54-camera canvas{display:none}.oj54-empty{position:relative;z-index:2;color:var(--oj54-muted);text-align:center;padding:20px;font-size:.82rem}.oj54-frame{position:absolute;inset:18px;border:2px solid rgba(94,232,255,.45);border-radius:18px;box-shadow:0 0 18px rgba(94,232,255,.12);pointer-events:none}.oj54-tools{display:flex;flex-wrap:wrap;gap:8px}.oj54-tools button,.oj54-btn{min-height:40px;border-radius:13px;border:1px solid rgba(94,232,255,.25);background:rgba(255,255,255,.06);color:#eaffff;font-weight:850;padding:9px 11px}.oj54-tools button.primary,.oj54-btn.primary{background:linear-gradient(135deg,var(--oj54-cyan),var(--oj54-blue));color:#03131f;border:0}.oj54-tools button.warn{border-color:rgba(250,204,21,.4);color:#fde68a}.oj54-tools button.danger{border-color:rgba(251,113,133,.45);color:#fecdd3}.oj54-tools button:active,.oj54-btn:active{transform:scale(.985)}
+  .oj54-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px}.oj54-form .wide{grid-column:1/-1}.oj54-form label{font-size:.68rem;color:var(--oj54-muted);font-weight:850;text-transform:uppercase}.oj54-form input,.oj54-form select,.oj54-form textarea{width:100%;box-sizing:border-box;border:1px solid rgba(94,232,255,.22);background:rgba(3,8,20,.55);color:#fff;border-radius:13px;padding:10px;font-size:16px;outline:none}.oj54-form textarea{min-height:78px;resize:vertical}.oj54-previews{display:grid;grid-template-columns:1fr 1fr;gap:10px}.oj54-preview{border:1px dashed rgba(255,255,255,.16);background:rgba(255,255,255,.045);border-radius:16px;min-height:150px;display:grid;place-items:center;text-align:center;color:var(--oj54-muted);font-size:.78rem;overflow:hidden}.oj54-preview img{width:100%;height:100%;object-fit:cover;display:block}.oj54-meter{height:9px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;margin-top:10px}.oj54-meter span{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--oj54-red),var(--oj54-gold),var(--oj54-green));border-radius:inherit;transition:.18s}
+  .oj54-upload{border:1px dashed rgba(94,232,255,.28);background:rgba(94,232,255,.045);border-radius:18px;padding:13px}.oj54-pair{display:grid;grid-template-columns:56px 1fr 1fr;gap:8px;align-items:stretch;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.04);border-radius:16px;padding:8px;margin:8px 0}.oj54-pairNo{display:grid;place-items:center;border-radius:13px;background:rgba(94,232,255,.10);color:var(--oj54-cyan);font-weight:950}.oj54-mini{min-height:100px;border:1px dashed rgba(255,255,255,.14);border-radius:13px;display:grid;place-items:center;overflow:hidden;color:var(--oj54-muted);font-size:.7rem;text-align:center}.oj54-mini img{width:100%;height:100%;object-fit:cover}.oj54-row{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.045);border-radius:16px;padding:10px;margin:8px 0}.oj54-row b{display:block;color:#fff}.oj54-row small{display:block;color:var(--oj54-muted);font-size:.72rem;line-height:1.35}.oj54-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.oj54-hide-old #v11Dock,.oj54-hide-old .v30-floating-health,.oj54-hide-old #v30HealthPill{display:none!important}
+  @media(max-width:520px){.oj54-page{padding:10px 9px 96px}.oj54-grid2,.oj54-grid3,.oj54-previews{grid-template-columns:1fr}.oj54-head{flex-direction:column}.oj54-pair{grid-template-columns:42px 1fr}.oj54-pair .oj54-mini:last-child{grid-column:2}.oj54-camera{min-height:260px}.oj54-tools button{flex:1 1 135px}}
+</style>
+<script id="oj54CleanEvidenceStudio">
+(function(){
+  if(window.__OJ54_CLEAN_EVIDENCE_STUDIO__) return;
+  window.__OJ54_CLEAN_EVIDENCE_STUDIO__='V54';
+  var DAMAGE_KEY='oj54_damage_evidence';
+  var MASTER_KEY='oj_damage_master_v11_backup';
+  var ROLE_KEY='oj52_role';
+  var ROUTES=[
+    ['cebu_tagbilaran','Cebu → Tagbilaran','Direct'],
+    ['cebu_maasin','Cebu → Maasin','Direct'],
+    ['maasin_cebu','Maasin → Cebu','Direct'],
+    ['cebu_surigao','Cebu → Surigao','via Maasin'],
+    ['maasin_surigao','Maasin → Surigao','Connecting leg'],
+    ['cebu_siquijor','Cebu → Siquijor','via Tagbilaran'],
+    ['cebu_dumaguete','Cebu → Dumaguete','via Tagbilaran'],
+    ['cebu_ormoc','Cebu → Ormoc','Direct'],
+    ['cebu_palompon','Cebu → Palompon','Direct'],
+    ['cebu_getafe','Cebu → Getafe','Direct']
+  ];
+  var SLABS={
+    cebu_tagbilaran:{normal:[15,25,30],fragile:[30,45,65]},
+    cebu_maasin:{normal:[20,27.5,32.5],fragile:[35,50,70]},
+    maasin_cebu:{normal:[20,27.5,32.5],fragile:[35,50,70]},
+    cebu_surigao:{normal:[30,35,40],fragile:[50,65,85]},
+    maasin_surigao:{normal:[20,27.5,32.5],fragile:[35,50,70]},
+    cebu_siquijor:{normal:[20,27.5,32.5],fragile:[35,50,70]},
+    cebu_dumaguete:{normal:[25,30,35],fragile:[40,55,75]},
+    cebu_ormoc:{normal:[20,27.5,32.5],fragile:[35,50,70]},
+    cebu_palompon:{normal:[20,27.5,32.5],fragile:[35,50,70]},
+    cebu_getafe:{normal:[10,20,25],fragile:[25,40,60]}
+  };
+  var PAX={
+    cebu_tagbilaran:{'TC/OA':1000,'BC':1560,'ST':800,'MI':500},
+    cebu_maasin:{'TC/OA':1430,'BC':1950,'ST':1144,'MI':715},
+    maasin_cebu:{'TC/OA':1430,'BC':1950,'ST':1144,'MI':715},
+    cebu_surigao:{'TC/OA':2470,'BC':3510,'ST':1976,'MI':1235},
+    maasin_surigao:{'TC/OA':1040,'BC':1560,'ST':832,'MI':520},
+    cebu_siquijor:{'TC/OA':2000,'BC':3120,'ST':1600,'MI':1000},
+    cebu_dumaguete:{'TC/OA':2170,'BC':3380,'ST':1736,'MI':1085},
+    cebu_ormoc:{'TC/OA':1430,'BC':1950,'ST':1144,'MI':715},
+    cebu_palompon:{'TC/OA':1430,'BC':1950,'ST':1144,'MI':715},
+    cebu_getafe:{'TC/OA':585,'BC':1040,'ST':468,'MI':292.5}
+  };
+  var SCHED={
+    cebu_maasin:{title:'Cebu to Maasin',travel:'3h',trips:[{dep:'7:00am',vessel:'OJ 03',arr:'10:00am',remarks:'Direct Maasin service'}]},
+    maasin_cebu:{title:'Maasin to Cebu',travel:'3h',trips:[{dep:'3:30pm',vessel:'OJ 03',arr:'6:30pm',remarks:'Direct Cebu return'}]},
+    maasin_surigao:{title:'Maasin to Surigao',travel:'2h',trips:[{dep:'10:30am',vessel:'OJ 388',arr:'12:30pm',remarks:'Connecting leg'}]},
+    cebu_surigao:{title:'Cebu to Surigao',travel:'5h 30m',trips:[{dep:'7:00am',vessel:'OJ 03 + OJ 388',arr:'12:30pm',remarks:'Via Maasin'}]}
+  };
+  var DESTS=['CEBU','TAGBILARAN','MAASIN','SURIGAO','DUMAGUETE','SIQUIJOR','ORMOC','PALOMPON','GETAFE','OTHER'];
+  var TYPES=['Inspection','Scratch / scuff','Dent / deformation','Cracked shell','Torn fabric','Broken zipper','Wet damage','Missing wheel/handle','Missing item/accessory','Other'];
+  var SEV=['Minor','Moderate','Critical','For supervisor review'];
+  var stub=null, damage=null, stream=null, batchPairs=[];
+  function $(id){return document.getElementById(id)}
+  function qsa(sel,root){return Array.prototype.slice.call((root||document).querySelectorAll(sel))}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function today(){var d=new Date(); return d.toLocaleDateString('en-CA',{timeZone:'Asia/Manila'})}
+  function now(){return new Date().toLocaleString('en-PH',{timeZone:'Asia/Manila'})}
+  function read(k,f){try{var raw=localStorage.getItem(k); return raw?JSON.parse(raw):f}catch(e){return f}}
+  function write(k,v){try{localStorage.setItem(k,JSON.stringify(v)); return true}catch(e){status('Phone/browser storage is full. Export or clear older evidence first.','bad'); return false}}
+  function toast(msg){try{if(typeof window.toast==='function') return window.toast(msg)}catch(e){} var t=$('oj54Toast'); if(!t){t=document.createElement('div');t.id='oj54Toast';t.style.cssText='position:fixed;left:50%;bottom:84px;transform:translateX(-50%);z-index:999999;background:#071527;color:#eaffff;border:1px solid rgba(94,232,255,.35);border-radius:999px;padding:10px 14px;font-size:13px;box-shadow:0 12px 34px rgba(0,0,0,.35);opacity:0;transition:.18s';document.body.appendChild(t)} t.textContent=msg;t.style.opacity='1';clearTimeout(t._tm);t._tm=setTimeout(function(){t.style.opacity='0'},2200)}
+  function status(msg,kind){var el=$('oj54Status'); if(el){el.className='oj54-status '+(kind||''); el.innerHTML=msg}}
+  function role(){try{return String(sessionStorage.getItem(ROLE_KEY)||localStorage.getItem(ROLE_KEY)||'pax').toLowerCase()}catch(e){return 'pax'}}
+  function safeClone(o){return JSON.parse(JSON.stringify(o))}
+  function ensureRoutes(){try{if(typeof DB==='undefined')return; DB.slabs=DB.slabs||{}; DB.paxFares=DB.paxFares||{}; DB.schedules=DB.schedules||{}; ROUTES.forEach(function(r){var k=r[0]; if(!DB.slabs[k])DB.slabs[k]=safeClone(SLABS[k]); if(!DB.paxFares[k])DB.paxFares[k]=Object.assign({},PAX[k])}); Object.keys(SCHED).forEach(function(k){if(!DB.schedules[k])DB.schedules[k]=safeClone(SCHED[k])}); if(typeof saveDB==='function')saveDB()}catch(e){console.warn('V54 route ensure skipped',e)}}
+  function refreshCalculatorRoutes(){ensureRoutes(); var sel=$('calcRoute'); if(!sel)return; var val=sel.value||'cebu_tagbilaran'; sel.innerHTML=ROUTES.map(function(r){return '<option value="'+esc(r[0])+'">'+esc(r[1]+(r[2]&&r[2]!=='Direct'?' ('+r[2]+')':''))+'</option>'}).join(''); if(SLABS[val])sel.value=val; if(!$('oj54RouteNotice')){var n=document.createElement('div'); n.id='oj54RouteNotice'; n.className='oj54-status good'; n.style.margin='10px 0'; n.innerHTML='<b>Route added:</b> Cebu → Maasin and Maasin → Cebu are active. Cebu → Surigao remains via Maasin.'; var g=sel.closest('.input-group')||sel.parentElement; if(g)g.insertAdjacentElement('afterend',n)}}
+  function patchCalculator(){ensureRoutes(); var old=window.buildCalculator||(typeof buildCalculator==='function'?buildCalculator:null); if(typeof old==='function'&&!old.__oj54Wrapped){window.buildCalculator=function(){ensureRoutes(); var out=old.apply(this,arguments); setTimeout(refreshCalculatorRoutes,0); setTimeout(refreshCalculatorRoutes,160); return out}; window.buildCalculator.__oj54Wrapped=true; try{buildCalculator=window.buildCalculator}catch(e){}} var comp=window.compute||(typeof compute==='function'?compute:null); if(typeof comp==='function'&&!comp.__oj54Wrapped){window.compute=function(){ensureRoutes(); refreshCalculatorRoutes(); return comp.apply(this,arguments)}; window.compute.__oj54Wrapped=true; try{compute=window.compute}catch(e){}} setTimeout(refreshCalculatorRoutes,600)}
+  function activateDamage(){var v=$('view-damage'); if(!v){v=document.createElement('div');v.id='view-damage';v.className='view';(document.querySelector('.app')||document.body).appendChild(v)} qsa('.view').forEach(function(x){x.classList.remove('active')}); v.classList.add('active'); qsa('#drawerMenu .drawer-item').forEach(function(x){x.classList.toggle('active',(x.getAttribute('data-view')||'')==='damage')}); try{if(typeof closeDrawer==='function')closeDrawer()}catch(e){} try{window.scrollTo({top:0,behavior:'smooth'})}catch(e){window.scrollTo(0,0)} document.body.classList.add('oj54-hide-old'); return v}
+  function options(arr,sel){return arr.map(function(x){return '<option '+(x===sel?'selected':'')+'>'+esc(x)+'</option>'}).join('')}
+  function records(){var a=read(DAMAGE_KEY,[]); return Array.isArray(a)?a:[]}
+  function master(){var m=read(MASTER_KEY,{cases:[],batches:[],nextCaseSeq:1,nextBatchSeq:1,settings:{}}); if(!m||typeof m!=='object'||Array.isArray(m))m={cases:[],batches:[],nextCaseSeq:1,nextBatchSeq:1,settings:{}}; if(!Array.isArray(m.cases))m.cases=[]; if(!Array.isArray(m.batches))m.batches=[]; return m}
+  function quality(a,b){return Math.min(100,(a?45:0)+(b?45:0)+(a&&b?10:0))}
+  function caseObj(pairNo,source,stb,dmg,names){var id='OJ-DMG-'+Date.now().toString(36).toUpperCase()+'-'+String(pairNo||1).padStart(2,'0'); var q=quality(stb,dmg); var photos=[]; if(stb)photos.push({role:'Claim Stub',name:(names&&names.stubName)||'claim-stub.jpg',dataUrl:stb}); if(dmg)photos.push({role:'Damage Image',name:(names&&names.damageName)||'damage-image.jpg',dataUrl:dmg}); return {caseId:id,id:id,batchId:source.batchId,createdAt:new Date().toISOString(),phtTimestamp:now(),dateTaken:today(),destination:$('oj54Dest')?$('oj54Dest').value:'MAASIN',tagNo:($('oj54Tag')?$('oj54Tag').value.trim():''),claimId:($('oj54ClaimId')?$('oj54ClaimId').value.trim():''),lastName:($('oj54LastName')?$('oj54LastName').value.trim():''),staff:($('oj54Staff')?$('oj54Staff').value.trim():'Dock Staff'),damageType:($('oj54Type')?$('oj54Type').value:'Inspection'),severity:($('oj54Severity')?$('oj54Severity').value:'Minor'),notes:($('oj54Notes')?$('oj54Notes').value.trim():''),status:(stb&&dmg)?'Ready for review':'Needs photo review',source:source.source,qualityScore:q,evidenceScore:q,photos:photos,locked:false}}
+  function saveCases(cases,batchId,src){var list=records(); cases.forEach(function(c){list.unshift(c)}); write(DAMAGE_KEY,list.slice(0,300)); var m=master(); cases.forEach(function(c){m.cases.unshift(c)}); m.cases=m.cases.slice(0,500); m.batches.unshift({batchId:batchId,createdAt:new Date().toISOString(),phtTimestamp:now(),source:src,count:cases.length}); m.batches=m.batches.slice(0,120); write(MASTER_KEY,m); try{localStorage.setItem('oj54_last_damage_open','1')}catch(e){} }
+  function renderPreviews(){var sp=$('oj54StubPreview'), dp=$('oj54DamagePreview'); if(sp)sp.innerHTML=stub?'<img alt="Claim stub preview" src="'+stub+'">':'<div><b>Claim Stub</b><br>No stub image yet</div>'; if(dp)dp.innerHTML=damage?'<img alt="Damage image preview" src="'+damage+'">':'<div><b>Damage Image</b><br>No damage image yet</div>'; var q=quality(stub,damage); var m=$('oj54PairMeter'); if(m)m.style.width=q+'%'; var tx=$('oj54PairText'); if(tx)tx.textContent='Pair completeness: '+q+'%'+(q<100?' • save allowed but marked for review':' • complete')}
+  function renderRecent(){var box=$('oj54Recent'); if(!box)return; var ev=records(); if(!ev.length){box.innerHTML='<div class="oj54-status">No evidence saved yet.</div>'; return} box.innerHTML=ev.slice(0,20).map(function(x){var ph=(x.photos||[]).length; var cls=/critical/i.test(x.severity||'')?'bad':(/moderate|review/i.test(x.severity||'')?'warn':'good'); return '<div class="oj54-row"><div><b>'+esc(x.caseId||x.id)+'</b><small>'+esc(x.destination||'')+' • '+esc(x.tagNo||'No tag')+' • '+esc(x.damageType||'Inspection')+'<br>'+esc(x.phtTimestamp||x.createdAt||'')+' • '+ph+' photo(s) • '+(x.qualityScore||0)+'% evidence</small></div><span class="oj54-pill '+cls+'">'+esc(x.severity||'Minor')+'</span></div>'}).join('')}
+  function renderBatch(){var box=$('oj54BatchReview'); if(!box)return; if(!batchPairs.length){box.innerHTML='<div class="oj54-status">No batch selected yet. Select images in order: 1 stub, 2 damage, 3 stub, 4 damage.</div>'; return} box.innerHTML=batchPairs.map(function(p){return '<div class="oj54-pair"><div class="oj54-pairNo">#'+p.pairNo+'</div><div class="oj54-mini">'+(p.stub?'<img src="'+p.stub+'" alt="Stub '+p.pairNo+'">':'Missing stub')+'</div><div class="oj54-mini">'+(p.damage?'<img src="'+p.damage+'" alt="Damage '+p.pairNo+'">':'Missing damage')+'</div></div>'}).join('')+'<button class="oj54-btn primary" onclick="oj54SaveBatch()">Save '+batchPairs.length+' Pair(s)</button>'}
+  function resizeFile(file){return new Promise(function(resolve,reject){var r=new FileReader(); r.onerror=reject; r.onload=function(e){var img=new Image(); img.onerror=function(){resolve(e.target.result)}; img.onload=function(){var w=img.width,h=img.height,max=1280; if(w>max||h>max){if(w>=h){h=Math.round(h*max/w);w=max}else{w=Math.round(w*max/h);h=max}} var c=document.createElement('canvas'); c.width=Math.max(1,w); c.height=Math.max(1,h); c.getContext('2d').drawImage(img,0,0,c.width,c.height); resolve(c.toDataURL('image/jpeg',.74))}; img.src=e.target.result}; r.readAsDataURL(file)})}
+  function snapshot(){var v=$('oj54Video'), c=$('oj54Canvas'); if(!v||v.readyState<2){toast('Start camera first, or use Upload Stub / Upload Damage.'); return ''} c.width=v.videoWidth||1280; c.height=v.videoHeight||720; c.getContext('2d').drawImage(v,0,0,c.width,c.height); return c.toDataURL('image/jpeg',.76)}
+  window.oj54OpenDamage=function(){var v=activateDamage(); var ev=records(); var urgent=ev.filter(function(x){return /critical|supervisor/i.test(x.severity||'')}).length; var photos=ev.reduce(function(a,x){return a+((x.photos||[]).length)},0); v.innerHTML='<div class="oj54-page"><div class="oj54-hero"><div class="oj54-head"><div><h2>Damage Evidence Studio V54</h2><div class="oj54-sub">Clean replacement for the old scanner. No confusing auto/default method. Use manual camera or upload photos. Batch order is 1-2, 3-4, 5-6: Claim Stub + Damage Image.</div></div><span class="oj54-pill good">Manual only</span></div><div class="oj54-grid3" style="margin-top:12px"><div class="oj54-kpi"><b>'+ev.length+'</b><span>Evidence cases</span></div><div class="oj54-kpi"><b>'+urgent+'</b><span>Urgent</span></div><div class="oj54-kpi"><b>'+photos+'</b><span>Photos</span></div></div></div><div id="oj54Status" class="oj54-status good">Ready. Camera will not start unless you press Start Camera.</div><div class="oj54-grid2"><div class="oj54-card"><h3>📷 Manual Camera / Upload</h3><div class="oj54-camera"><div class="oj54-empty" id="oj54Empty">Start camera, then capture Claim Stub and Damage Image.</div><video id="oj54Video" autoplay playsinline muted></video><canvas id="oj54Canvas"></canvas><div class="oj54-frame"></div></div><div class="oj54-tools" style="margin-top:10px"><button class="primary" onclick="oj54StartCamera()">Start Camera</button><button onclick="oj54StopCamera()">Stop</button><button class="warn" onclick="oj54CaptureStub()">Capture Stub</button><button class="warn" onclick="oj54CaptureDamage()">Capture Damage</button><button onclick="document.getElementById(\'oj54StubInput\').click()">Upload Stub</button><button onclick="document.getElementById(\'oj54DamageInput\').click()">Upload Damage</button><button class="danger" onclick="oj54ClearPair()">Clear Pair</button><button class="primary" onclick="oj54SavePair()">Save Pair</button></div><input id="oj54StubInput" type="file" accept="image/*" style="display:none" onchange="oj54UploadOne(this,\'stub\')"><input id="oj54DamageInput" type="file" accept="image/*" style="display:none" onchange="oj54UploadOne(this,\'damage\')"></div><div class="oj54-card"><h3>🧾 Evidence Details</h3><div class="oj54-form"><div><label>Destination</label><select id="oj54Dest">'+options(DESTS,'MAASIN')+'</select></div><div><label>Tag / Stub No.</label><input id="oj54Tag" placeholder="e.g. OJ-68403"></div><div><label>Claim ID / PSN</label><input id="oj54ClaimId" placeholder="Optional"></div><div><label>Last Name</label><input id="oj54LastName" placeholder="Optional"></div><div><label>Staff / Shift</label><input id="oj54Staff" value="Dock Staff"></div><div><label>Damage Type</label><select id="oj54Type">'+options(TYPES,'Inspection')+'</select></div><div><label>Severity</label><select id="oj54Severity">'+options(SEV,'Minor')+'</select></div><div class="wide"><label>Notes</label><textarea id="oj54Notes" placeholder="Describe damaged part, passenger remarks, or staff observation"></textarea></div></div><div class="oj54-previews" style="margin-top:10px"><div id="oj54StubPreview" class="oj54-preview"></div><div id="oj54DamagePreview" class="oj54-preview"></div></div><div class="oj54-meter"><span id="oj54PairMeter"></span></div><div id="oj54PairText" class="oj54-sub">Pair completeness: 0%</div></div></div><div class="oj54-card"><h3>📥 Paired Batch Upload</h3><div class="oj54-upload"><p class="oj54-sub" style="margin-top:0">Select photos in exact order. Photo 1 = claim stub, photo 2 = damage image. Photo 3 = next stub, photo 4 = next damage image.</p><input id="oj54BatchInput" type="file" accept="image/*" multiple onchange="oj54BatchSelect(this)"><button class="oj54-btn primary" onclick="document.getElementById(\'oj54BatchInput\').click()">Choose Batch Images</button><div id="oj54BatchProgress" class="oj54-sub" style="margin-top:8px">Waiting for selected images.</div></div><div id="oj54BatchReview" style="margin-top:10px"></div></div><div class="oj54-card"><h3>🗂 Recent Evidence</h3><div class="oj54-actions"><button class="oj54-btn" onclick="oj54ExportDamageJSON()">Export JSON</button><button class="oj54-btn" onclick="oj54ExportDamageCSV()">Export CSV</button><button class="oj54-btn danger" onclick="oj54ClearEvidence()">Clear V54 Evidence</button></div><div id="oj54Recent" style="margin-top:10px"></div></div></div>'; renderPreviews(); renderBatch(); renderRecent(); document.title='OceanJet V54 Damage Evidence Studio'; return false};
+  window.oj54StartCamera=async function(){try{window.oj54StopCamera(); if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw new Error('Camera API unavailable'); stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:720}},audio:false}); var v=$('oj54Video'); if(v){v.srcObject=stream; await v.play()} var e=$('oj54Empty'); if(e)e.style.display='none'; status('Camera active. Capture Claim Stub first, then Damage Image.','good')}catch(e){status('Camera unavailable or permission blocked. Upload Stub / Upload Damage still works.','warn'); toast('Upload fallback ready')}};
+  window.oj54StopCamera=function(){try{if(stream){stream.getTracks().forEach(function(t){t.stop()}); stream=null}}catch(e){} var v=$('oj54Video'); if(v)v.srcObject=null; var e=$('oj54Empty'); if(e)e.style.display='grid'};
+  window.oj54CaptureStub=function(){var u=snapshot(); if(!u)return; stub=u; renderPreviews(); status('Claim Stub captured. Now capture or upload Damage Image.','good')};
+  window.oj54CaptureDamage=function(){var u=snapshot(); if(!u)return; damage=u; renderPreviews(); status('Damage Image captured. Save Pair when ready.','good')};
+  window.oj54UploadOne=async function(input,kind){var f=input.files&&input.files[0]; if(!f)return; var u=await resizeFile(f); if(kind==='stub')stub=u; else damage=u; renderPreviews(); status((kind==='stub'?'Claim Stub':'Damage Image')+' uploaded.','good'); input.value=''};
+  window.oj54ClearPair=function(){stub=null;damage=null;renderPreviews();status('Current pair cleared.','warn')};
+  window.oj54SavePair=function(){if(!stub&&!damage){toast('Capture or upload at least one image first.');return} var batchId='PAIR-'+today().replace(/-/g,'')+'-'+Date.now().toString(36).slice(-4).toUpperCase(); var c=caseObj(1,{batchId:batchId,source:'V54 manual pair'},stub,damage,{}); saveCases([c],batchId,'V54 manual pair'); stub=null; damage=null; renderPreviews(); renderRecent(); status('<b>'+esc(c.caseId)+'</b> saved.','good'); toast('Evidence pair saved')};
+  window.oj54BatchSelect=async function(input){var files=Array.prototype.slice.call(input.files||[]).filter(function(f){return f.type&&f.type.indexOf('image/')===0}); if(!files.length){toast('No image files selected.');return} batchPairs=[]; var p=$('oj54BatchProgress'); if(p)p.textContent='Compressing '+files.length+' image(s)...'; var urls=[]; for(var i=0;i<files.length;i++){if(p)p.textContent='Compressing '+(i+1)+' of '+files.length+': '+files[i].name; urls.push(await resizeFile(files[i]))} for(var j=0;j<urls.length;j+=2){batchPairs.push({pairNo:Math.floor(j/2)+1,stub:urls[j]||'',damage:urls[j+1]||'',stubName:(files[j]&&files[j].name)||'',damageName:(files[j+1]&&files[j+1].name)||''})} if(p)p.textContent='Batch ready: '+batchPairs.length+' pair(s). Review then save.'; renderBatch(); input.value=''};
+  window.oj54SaveBatch=function(){if(!batchPairs.length){toast('Choose batch images first.');return} var batchId='BATCH-'+today().replace(/-/g,'')+'-'+Date.now().toString(36).slice(-5).toUpperCase(); var cases=batchPairs.map(function(p){return caseObj(p.pairNo,{batchId:batchId,source:'V54 paired batch'},p.stub,p.damage,p)}); saveCases(cases,batchId,'V54 paired batch upload'); batchPairs=[]; renderBatch(); renderRecent(); status('<b>'+esc(batchId)+'</b> saved with '+cases.length+' case(s).','good'); toast('Batch saved')};
+  window.oj54ExportDamageJSON=function(){var data={version:'V54',exportedAt:new Date().toISOString(),evidence:records(),master:master()}; var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})); a.download='oceanjet_damage_evidence_v54_'+today()+'.json'; document.body.appendChild(a); a.click(); setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},1000)};
+  window.oj54ExportDamageCSV=function(){var rows=records(); var head=['caseId','createdAt','destination','tagNo','claimId','lastName','damageType','severity','status','qualityScore','photoCount','notes']; var csv=[head.join(',')].concat(rows.map(function(r){return head.map(function(k){var val=k==='photoCount'?((r.photos||[]).length):(r[k]||''); return '"'+String(val).replace(/"/g,'""')+'"'}).join(',')})).join('\n'); var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download='oceanjet_damage_evidence_v54_'+today()+'.csv'; document.body.appendChild(a); a.click(); setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},1000)};
+  window.oj54ClearEvidence=function(){if(!confirm('Clear V54 evidence records on this phone? Export first if needed.'))return; localStorage.removeItem(DAMAGE_KEY); renderRecent(); status('V54 evidence records cleared. Master backup key was kept for audit compatibility.','warn')};
+  function patchOpeners(){var old=window.oj52Open||window.showView; if(!window.__OJ54_OLD_OPEN__)window.__OJ54_OLD_OPEN__=old; var open=function(target){var t=String(target||'home').replace(/^view-/,'').toLowerCase(); if(['damage','scanner','camera','evidence','ar','evidence-studio'].indexOf(t)>=0)return window.oj54OpenDamage(); if(t==='calculator')setTimeout(refreshCalculatorRoutes,180); return window.__OJ54_OLD_OPEN__?window.__OJ54_OLD_OPEN__.apply(this,arguments):undefined}; open.__oj54=true; window.oj52Open=open; window.showView=open; try{showView=open}catch(e){} var oldNav=window.navigate; if(!window.__OJ54_OLD_NAV__)window.__OJ54_OLD_NAV__=oldNav; window.navigate=function(target){var t=String(target||'').replace(/^view-/,'').toLowerCase(); if(['damage','scanner','camera','evidence','ar','evidence-studio'].indexOf(t)>=0)return window.oj54OpenDamage(); if(t==='calculator')setTimeout(refreshCalculatorRoutes,180); return window.__OJ54_OLD_NAV__?window.__OJ54_OLD_NAV__.apply(this,arguments):window.oj52Open(target)}; try{navigate=window.navigate}catch(e){}}
+  function patchDrawer(){var box=$('drawerMenu'); if(!box)return; qsa('.drawer-item',box).forEach(function(el){var t=(el.getAttribute('data-view')||'').toLowerCase(); var txt=(el.textContent||'').toLowerCase(); if(t==='damage'||t==='ar'||txt.indexOf('damage scanner')>=0||txt.indexOf('damage evidence')>=0){el.setAttribute('data-view','damage'); el.onclick=function(){return window.oj54OpenDamage()}; if(el.classList.contains('oj52-menu'))el.innerHTML='<i>📹</i><span><b>Damage Evidence</b><small>Manual camera + paired batch</small></span>'; else el.innerHTML='<i>📹</i> Damage Evidence'}})}
+  function patchDrawerBuilder(){var old=window.buildDrawerMenu; if(typeof old==='function'&&!old.__oj54){window.buildDrawerMenu=function(){var r=old.apply(this,arguments); patchDrawer(); return r}; window.buildDrawerMenu.__oj54=true; try{buildDrawerMenu=window.buildDrawerMenu}catch(e){}}}
+  function removeOldAutoDamage(){try{window.stopScanner&&window.stopScanner(false)}catch(e){} try{clearInterval(window.__v11ClockTimer);window.__v11ClockTimer=null}catch(e){} qsa('#v11Dock,#v11DamageContent,.v11-scanner,.v11-auto').forEach(function(el){try{el.style.display='none'}catch(e){}})}
+  function boot(){patchCalculator(); patchOpeners(); patchDrawerBuilder(); patchDrawer(); removeOldAutoDamage();}
+  document.addEventListener('click',function(e){var el=e.target&&e.target.closest?e.target.closest('[data-view],button,a,.drawer-item,.oj52-cardBtn'):null; if(!el)return; var t=(el.getAttribute('data-view')||el.getAttribute('data-target')||'').toLowerCase(); var tx=(el.textContent||'').toLowerCase(); if(t==='damage'||t==='ar'||tx.indexOf('damage scanner')>=0||tx.indexOf('damage evidence')>=0){e.preventDefault(); e.stopPropagation(); window.oj54OpenDamage(); return false}},true);
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true}); else boot();
+})();
+</script>
+
+
+<!-- OCEANJET V55 SYSTEM UI RENOVATION: new design, role navigation, no background auto-repair loops -->
+<style id="oj55SystemUIStyles">
+  :root{
+    --oj55-bg:#06111f;--oj55-panel:rgba(8,20,38,.82);--oj55-panel2:rgba(11,29,54,.74);
+    --oj55-line:rgba(125,231,255,.18);--oj55-cyan:#5ee8ff;--oj55-blue:#79a8ff;--oj55-green:#72f2ac;
+    --oj55-gold:#ffd76d;--oj55-pink:#ff73ca;--oj55-red:#ff708f;--oj55-text:#eef8ff;--oj55-muted:#9cb5ca;
+  }
+  body.oj55-system{
+    background:
+      radial-gradient(circle at 15% 8%,rgba(94,232,255,.18),transparent 36%),
+      radial-gradient(circle at 88% 12%,rgba(255,115,202,.14),transparent 35%),
+      radial-gradient(circle at 50% 95%,rgba(114,242,172,.10),transparent 38%),
+      var(--oj55-bg)!important;
+  }
+  body.oj55-system::before{display:none!important}
+  body.oj55-system .app{max-width:1180px!important;overflow:visible!important;padding-bottom:94px;}
+  body.oj55-system .header{
+    top:8px;margin:8px 10px 0;border:1px solid var(--oj55-line)!important;border-radius:22px!important;
+    background:linear-gradient(135deg,rgba(5,16,32,.88),rgba(10,29,55,.72))!important;
+    box-shadow:0 14px 44px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.07)!important;
+  }
+  body.oj55-system .brand{-webkit-text-fill-color:initial!important;background:none!important;color:var(--oj55-text)!important;font-weight:950;letter-spacing:-.03em;}
+  body.oj55-system .brand::after{content:' V55';display:inline-flex;margin-left:6px;color:var(--oj55-cyan);font-size:.68rem;vertical-align:middle;letter-spacing:.08em;}
+  body.oj55-system .clock,body.oj55-system .role-badge,body.oj55-system .toggle-dark{
+    border-color:var(--oj55-line)!important;background:rgba(255,255,255,.06)!important;color:var(--oj55-cyan)!important;
+  }
+  body.oj55-system .side-drawer{
+    width:min(340px,86vw)!important;left:-360px;border-radius:0 28px 28px 0!important;
+    background:linear-gradient(180deg,rgba(4,14,29,.98),rgba(13,34,64,.96))!important;border-right:1px solid var(--oj55-line)!important;
+  }
+  body.oj55-system .drawer-menu{gap:4px!important;margin-top:46px!important;overflow:auto;padding-bottom:18px;}
+  body.oj55-system .drawer-item.oj55-menu{
+    display:flex!important;align-items:center;gap:12px;margin:4px 8px;padding:12px;border:1px solid rgba(125,231,255,.14)!important;
+    border-radius:18px!important;background:rgba(255,255,255,.045)!important;color:var(--oj55-text)!important;box-shadow:none!important;
+  }
+  body.oj55-system .drawer-item.oj55-menu i{width:28px;height:28px;display:grid;place-items:center;border-radius:12px;background:rgba(94,232,255,.09);font-style:normal;}
+  body.oj55-system .drawer-item.oj55-menu b{display:block;font-size:.88rem;line-height:1.1}
+  body.oj55-system .drawer-item.oj55-menu small{display:block;color:var(--oj55-muted);font-size:.67rem;margin-top:3px;line-height:1.25}
+  body.oj55-system .drawer-item.oj55-menu.active{border-color:rgba(94,232,255,.52)!important;background:linear-gradient(135deg,rgba(94,232,255,.14),rgba(121,168,255,.08))!important;}
+  .oj55-section{padding:14px 18px 6px;color:var(--oj55-cyan);font-weight:950;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;}
+  .oj55-shell{max-width:1120px;margin:0 auto;padding:4px 10px 20px;display:grid;gap:14px;}
+  .oj55-hero,.oj55-card,.oj55-panel{
+    position:relative;overflow:hidden;border:1px solid var(--oj55-line);border-radius:28px;
+    background:linear-gradient(145deg,rgba(8,20,38,.88),rgba(10,29,54,.72));
+    box-shadow:0 20px 60px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.065);padding:16px;
+  }
+  .oj55-hero::before,.oj55-card::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at top right,rgba(94,232,255,.13),transparent 42%);}
+  .oj55-title{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:14px;}
+  .oj55-title h1{margin:0;color:var(--oj55-text);font-size:clamp(1.55rem,4vw,2.6rem);letter-spacing:-.055em;line-height:1.02;}
+  .oj55-title p{margin:8px 0 0;color:var(--oj55-muted);font-size:.9rem;line-height:1.45;max-width:780px;}
+  .oj55-chip{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;border:1px solid rgba(94,232,255,.30);border-radius:999px;padding:7px 10px;background:rgba(94,232,255,.075);color:#bff6ff;font-size:.64rem;font-weight:950;text-transform:uppercase;letter-spacing:.08em;}
+  .oj55-chip.gold{border-color:rgba(255,215,109,.38);background:rgba(255,215,109,.08);color:#ffe7aa}.oj55-chip.green{border-color:rgba(114,242,172,.36);background:rgba(114,242,172,.08);color:#c9ffd9}.oj55-chip.pink{border-color:rgba(255,115,202,.40);background:rgba(255,115,202,.08);color:#ffd0f0}.oj55-chip.red{border-color:rgba(255,112,143,.40);background:rgba(255,112,143,.09);color:#ffd2dc}
+  .oj55-rolebar{position:relative;display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+  .oj55-rolebar button{border-radius:999px!important;padding:9px 12px!important;border:1px solid rgba(125,231,255,.16)!important;background:rgba(255,255,255,.055)!important;color:var(--oj55-text)!important;font-weight:950;}
+  .oj55-rolebar button.active{border-color:rgba(94,232,255,.55)!important;background:linear-gradient(135deg,rgba(94,232,255,.18),rgba(121,168,255,.10))!important;color:#dffbff!important;}
+  .oj55-metrics{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px;}
+  .oj55-metric{border:1px solid rgba(255,255,255,.085);border-radius:20px;background:rgba(255,255,255,.045);padding:13px;min-width:0;}
+  .oj55-metric b{display:block;color:#fff;font-size:1.18rem;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}.oj55-metric span{display:block;color:var(--oj55-muted);font-size:.64rem;margin-top:4px;text-transform:uppercase;letter-spacing:.06em;font-weight:850;}
+  .oj55-search{position:relative;display:flex;gap:9px;margin-top:14px;}.oj55-search input{border-radius:18px!important;border:1px solid rgba(94,232,255,.24)!important;background:rgba(1,8,18,.56)!important;color:var(--oj55-text)!important;padding:13px 14px!important;}.oj55-search button{border-radius:18px!important;background:linear-gradient(135deg,var(--oj55-cyan),var(--oj55-blue))!important;color:#041322!important;border:0!important;font-weight:950;}
+  .oj55-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.oj55-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.oj55-grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+  .oj55-action{position:relative;text-align:left;min-height:112px;border:1px solid rgba(125,231,255,.16)!important;border-radius:22px!important;background:rgba(255,255,255,.048)!important;color:var(--oj55-text)!important;padding:14px!important;display:flex!important;flex-direction:column;justify-content:space-between;gap:12px;box-shadow:none!important;}
+  .oj55-action:hover{transform:translateY(-2px);border-color:rgba(94,232,255,.42)!important;background:rgba(94,232,255,.08)!important}.oj55-action i{font-style:normal;font-size:1.5rem}.oj55-action b{display:block;font-size:.96rem;color:#fff}.oj55-action small{display:block;color:var(--oj55-muted);line-height:1.34;font-size:.72rem;margin-top:4px}.oj55-action em{align-self:flex-start;font-style:normal;border-radius:999px;background:rgba(94,232,255,.12);border:1px solid rgba(94,232,255,.26);padding:5px 8px;color:#c8f8ff;font-size:.62rem;font-weight:950;text-transform:uppercase;letter-spacing:.05em}.oj55-action.gold em{background:rgba(255,215,109,.12);border-color:rgba(255,215,109,.26);color:#ffe7aa}.oj55-action.green em{background:rgba(114,242,172,.11);border-color:rgba(114,242,172,.26);color:#ceffde}.oj55-action.pink em{background:rgba(255,115,202,.11);border-color:rgba(255,115,202,.26);color:#ffd2f1}.oj55-action.locked{opacity:.78}.oj55-action.locked::after{content:'Locked';position:absolute;right:11px;top:11px;border-radius:999px;background:rgba(255,215,109,.14);border:1px solid rgba(255,215,109,.28);color:#ffe8ad;font-size:.56rem;font-weight:950;padding:4px 7px;text-transform:uppercase;}
+  .oj55-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.oj55-step{border:1px solid rgba(255,255,255,.085);background:rgba(255,255,255,.04);border-radius:20px;padding:13px}.oj55-step b{display:block;color:#fff}.oj55-step small{display:block;color:var(--oj55-muted);line-height:1.35;margin-top:5px}.oj55-step.live{border-color:rgba(94,232,255,.34);background:rgba(94,232,255,.065)}.oj55-step.done{border-color:rgba(114,242,172,.30);background:rgba(114,242,172,.06)}
+  .oj55-note{border:1px dashed rgba(94,232,255,.25);background:rgba(94,232,255,.06);border-radius:18px;padding:12px;color:#d7f8ff;font-size:.82rem;line-height:1.45}.oj55-note.warn{border-color:rgba(255,215,109,.30);background:rgba(255,215,109,.07);color:#ffedbd}.oj55-note.bad{border-color:rgba(255,112,143,.36);background:rgba(255,112,143,.08);color:#ffd4dd}
+  .oj55-list{display:grid;gap:9px}.oj55-row{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid rgba(255,255,255,.085);border-radius:18px;background:rgba(255,255,255,.04);padding:11px}.oj55-row b{color:#fff}.oj55-row small{display:block;color:var(--oj55-muted);margin-top:3px;line-height:1.35}.oj55-row button{border-radius:999px!important;padding:8px 10px!important;}
+  .oj55-bottom{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);z-index:80;width:min(680px,calc(100vw - 20px));display:grid;grid-template-columns:repeat(5,1fr);gap:6px;border:1px solid rgba(125,231,255,.20);border-radius:24px;background:rgba(4,14,29,.92);backdrop-filter:blur(18px);box-shadow:0 18px 60px rgba(0,0,0,.35);padding:7px;}
+  .oj55-bottom button{min-width:0;display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:0!important;border-radius:18px!important;background:transparent!important;color:var(--oj55-muted)!important;padding:8px 4px!important;font-size:.64rem!important;font-weight:900;}.oj55-bottom button i{font-style:normal;font-size:1.15rem}.oj55-bottom button.active{background:rgba(94,232,255,.12)!important;color:#dcfbff!important;}
+  .oj55-login{max-width:560px;margin:12px auto}.oj55-login .input-group label{color:var(--oj55-muted)!important}.oj55-login button{width:100%;justify-content:center;margin-top:8px}.oj55-split{display:grid;grid-template-columns:1.2fr .8fr;gap:12px;}
+  @media(max-width:780px){body.oj55-system .app{max-width:100%!important}.oj55-title{display:block}.oj55-title .oj55-chip{margin-top:10px}.oj55-metrics,.oj55-grid4{grid-template-columns:repeat(2,1fr)}.oj55-grid,.oj55-grid2,.oj55-flow,.oj55-split{grid-template-columns:1fr}.oj55-shell{padding:4px 10px 24px}.oj55-action{min-height:auto}.oj55-search{flex-direction:column}.oj55-bottom{grid-template-columns:repeat(5,1fr);bottom:8px}.oj55-bottom button span{font-size:.58rem}.oj55-row{align-items:flex-start;flex-direction:column}.oj55-rolebar button{flex:1;justify-content:center}}
+  @media(min-width:900px){body.oj55-system .view{padding:18px 18px 28px!important}}
+</style>
+<script id="oj55SystemUIScript">
+(function(){
+  if(window.__OJ55_SYSTEM_UI__) return;
+  window.__OJ55_SYSTEM_UI__='V55_SYSTEM_UI_RENOVATION';
+  var VERSION='OceanJet V55 System UI Renovation';
+  var ROLE_KEY='oj52_role';
+  var CLAIM_KEY='oj_v22_claims';
+  var RECEIPT_KEY='oj52_receipts';
+  var LEGACY_OPEN=window.oj52Open||window.showView||window.navigate;
+  var $=function(id){return document.getElementById(id)};
+  var qsa=function(sel,root){return Array.prototype.slice.call((root||document).querySelectorAll(sel))};
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function read(k,d){try{var raw=localStorage.getItem(k);return raw?JSON.parse(raw):d}catch(e){return d}}
+  function write(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){toast('Storage full. Export old photos or clear cache.');return false}}
+  function pht(){return new Date().toLocaleString('en-PH',{timeZone:'Asia/Manila',hour12:true})}
+  function today(){return new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Manila'})}
+  function peso(n){return '₱'+Number(n||0).toLocaleString('en-PH',{minimumFractionDigits:2,maximumFractionDigits:2})}
+  function normRole(r){r=String(r||'pax').toLowerCase(); if(['admin','supervisor','demo','owner'].indexOf(r)>=0)return 'admin'; if(['cashier','counter','staff'].indexOf(r)>=0)return 'cashier'; return 'pax'}
+  function role(){try{return normRole(sessionStorage.getItem(ROLE_KEY)||localStorage.getItem(ROLE_KEY)||sessionStorage.getItem('oj45_role')||sessionStorage.getItem('oj41_role')||'pax')}catch(e){return 'pax'}}
+  function setRole(r){r=normRole(r);try{sessionStorage.setItem(ROLE_KEY,r);localStorage.setItem(ROLE_KEY,r);sessionStorage.setItem('oj45_role',r);localStorage.setItem('oj45_role',r);sessionStorage.setItem('oj41_role',r);sessionStorage.setItem('oj_v35_active_role',r);window.currentRole=r==='admin'?'supervisor':(r==='cashier'?'cashier':null);try{currentRole=window.currentRole}catch(_){}}catch(e){} updateRoleUI();return r}
+  function updateRoleUI(){var r=role();document.body.classList.toggle('oj55-role-pax',r==='pax');document.body.classList.toggle('oj55-role-cashier',r==='cashier');document.body.classList.toggle('oj55-role-admin',r==='admin');var b=$('roleBadge');if(b)b.textContent=r==='admin'?'👑 Admin':r==='cashier'?'💼 Cashier':'👤 Passenger'}
+  function clearAutoTimers(){['__OJ52_STABILITY_TICK__','__oj47DrawerGuard','__oj46DrawerGuard','__oj45Guard','__oj44DrawerGuard','__oj42Interval','__oj41Interval','__oj35Guard','__v17BlankTimer','__v17AliveTimer'].forEach(function(k){try{if(window[k]){clearInterval(window[k]);clearTimeout(window[k]);window[k]=null}}catch(e){}}); qsa('#v17RecoveryScreen,#v14ErrorScreen,.v17-recovery,.v14-error-screen,#v17AliveBadge,#v30HealthPill,.v30-floating-health').forEach(function(el){try{el.remove()}catch(e){}}); try{window.showRecovery=function(){};window.showErrorScreen=function(){}}catch(e){} }
+  function activate(name){name=String(name||'dashboard').replace(/^view-/,'').toLowerCase();var id='view-'+name;var v=$(id);if(!v){v=document.createElement('div');v.id=id;v.className='view';var host=document.querySelector('.app')||document.body;host.appendChild(v)}qsa('.view').forEach(function(x){x.classList.remove('active')});v.classList.add('active');setActive(name);try{window.scrollTo({top:0,behavior:'smooth'})}catch(e){window.scrollTo(0,0)}return v}
+  function closeDrawer(){try{$('sideDrawer')&&$('sideDrawer').classList.remove('open');$('overlay')&&$('overlay').classList.remove('show');$('hamburger')&&$('hamburger').classList.remove('open')}catch(e){}}
+  function storageStats(){var bytes=0,keys=0;try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i)||'';keys++;bytes+=k.length+(localStorage.getItem(k)||'').length}}catch(e){}var mb=bytes*2/1024/1024;return{keys:keys,mb:mb,pct:Math.min(100,Math.round((mb/4.8)*100))}}
+  function getDbHistory(){var out=[];['off_baggage_v14','ojDB'].forEach(function(k){var v=read(k,{});if(v&&Array.isArray(v.history))out=out.concat(v.history)});return out}
+  function getClaims(){var out=[];['oj_v22_claims','oj44_claims'].forEach(function(k){var v=read(k,[]);if(Array.isArray(v))out=out.concat(v)});return out}
+  function getReceipts(){var out=[];['oj52_receipts','oj45_counter_receipts'].forEach(function(k){var v=read(k,[]);if(Array.isArray(v))out=out.concat(v)});return out}
+  function getEvidence(){var out=[];['oj45_damage_evidence','oj_damage_master_log_v11','off_damage_master_log_v11'].forEach(function(k){var v=read(k,[]);if(Array.isArray(v))out=out.concat(v);else if(v&&Array.isArray(v.cases))out=out.concat(v.cases)});var m=read('oj_damage_master_v11_backup',{cases:[]});if(m&&Array.isArray(m.cases))out=out.concat(m.cases);var seen={};return out.filter(function(x,i){var id=String((x&& (x.caseId||x.id||x.claimId))||('E'+i));if(seen[id])return false;seen[id]=1;return true})}
+  function metrics(){var h=getDbHistory(),c=getClaims(),r=getReceipts(),e=getEvidence(),s=storageStats();var rev=0,kg=0;h.forEach(function(x){rev+=Number(x.total||x.fee||0);kg+=Number(x.weight||x.totalKg||0)});r.forEach(function(x){rev+=Number(x.amount||0)});return{tx:h.length,claims:c.length,receipts:r.length,evidence:e.length,rev:rev,kg:kg,storage:s}}
+  function chip(t,cls){return '<span class="oj55-chip '+(cls||'')+'">'+esc(t)+'</span>'}
+  function metric(v,l){return '<div class="oj55-metric"><b>'+esc(v)+'</b><span>'+esc(l)+'</span></div>'}
+  function card(icon,title,sub,target,cls,locked){return '<button class="oj55-action '+(cls||'')+(locked?' locked':'')+'" onclick="oj55Open(\''+esc(target)+'\')"><span><i>'+icon+'</i><b>'+esc(title)+'</b><small>'+esc(sub)+'</small></span><em>'+(locked?'Login':'Open')+'</em></button>'}
+  function roleButtons(){var r=role();return '<div class="oj55-rolebar"><button class="'+(r==='pax'?'active':'')+'" onclick="oj55SwitchRole(\'pax\')">👤 Passenger</button><button class="'+(r==='cashier'?'active':'')+'" onclick="oj55SwitchRole(\'cashier\')">💼 Cashier</button><button class="'+(r==='admin'?'active':'')+'" onclick="oj55SwitchRole(\'admin\')">👑 Admin</button></div>'}
+  function hero(title,sub,tag,tagCls){var m=metrics();return '<div class="oj55-hero"><div class="oj55-title"><div><h1>'+esc(title)+'</h1><p>'+esc(sub)+'</p></div>'+chip(tag,tagCls)+'</div>'+roleButtons()+'<div class="oj55-metrics">'+metric(m.tx,'Transactions')+metric(m.claims,'Claims')+metric(m.evidence,'Evidence')+metric(m.storage.pct+'%','Storage')+'</div><div class="oj55-search"><input id="oj55Search" placeholder="Type: baggage, maasin, damage, claim, receipt, report, admin" onkeydown="if(event.key===\'Enter\')oj55Command()"><button onclick="oj55Command()">Open</button></div></div>'}
+  function homeCards(){var r=role();if(r==='admin')return card('📊','Command Dashboard','System overview, local records, and action launcher.','command','green')+card('👥','Counter Queue','Review claims, verify, update status.','staffcounter','gold')+card('📄','Reports Center','Print or export daily reports.','reports','green')+card('📹','Damage Evidence','Manual camera and paired batch upload.','damage','pink')+card('⚙️','Admin Panel','Original full settings and master controls.','admin','pink')+card('🛡️','System Tools','Cache, backup, storage and maintenance.','system','');if(r==='cashier')return card('🧮','Baggage Calculator','Official baggage fee calculator with Maasin route.','calculator','green')+card('👥','Counter Queue','Passenger claim and counter workflow.','staffcounter','gold')+card('🧾','Receipt Desk','Issue saved counter receipt.','receipt','green')+card('📹','Damage Evidence','Capture claim stub + damage photos.','damage','pink')+card('📄','Reports Center','Daily summary and browser PDF print.','reports','')+card('🔎','Track Claim','Search local claim records.','track','');return card('🧮','Baggage Calculator','Compute baggage fee. Cebu ⇄ Maasin included.','calculator','green')+card('📹','Damage Evidence','Upload/capture claim stub + damage image.','damage','pink')+card('🧳','Start Claim','Passenger damage or lost baggage report.','claim','gold')+card('🔎','Track Claim','Search claim ID, PSN, last name, route, or tag.','track','')+card('💵','Fare Guide','Passenger fare and baggage reference.','fares','')+card('💼','Staff Login','Cashier and Admin tools are separated.','login-cashier','',true)}
+  function flowHtml(){var r=role();if(r==='admin')return '<div class="oj55-step done"><b>1. Monitor</b><small>View claims, receipts, evidence, and storage.</small></div><div class="oj55-step live"><b>2. Control</b><small>Admin can access all passenger and cashier tools.</small></div><div class="oj55-step"><b>3. Maintain</b><small>Clear cache only after uploading a new version.</small></div>';if(r==='cashier')return '<div class="oj55-step done"><b>1. Compute</b><small>Use calculator for baggage fee and route check.</small></div><div class="oj55-step live"><b>2. Verify</b><small>Open counter queue, claim tracker, and evidence.</small></div><div class="oj55-step"><b>3. Report</b><small>Print reports or export JSON before shift close.</small></div>';return '<div class="oj55-step done"><b>1. Public mode</b><small>No login needed for passenger tools.</small></div><div class="oj55-step live"><b>2. Submit</b><small>Calculate baggage or start damage claim.</small></div><div class="oj55-step"><b>3. Staff only</b><small>Cashier/Admin tools stay hidden until login.</small></div>'}
+  function renderHome(){var r=role();var title=r==='admin'?'Admin Control Tower':r==='cashier'?'Cashier Counter Workspace':'Passenger Service Hub';var sub=r==='admin'?'Full access, but organized into operations, reports, evidence, and system tools.':r==='cashier'?'Counter tools only: calculator, claim queue, receipts, evidence, and reports.':'Clean public interface for baggage fee, claims, damage evidence, routes, and tracking.';var tag=r==='admin'?'Full Access':r==='cashier'?'Counter Mode':'Passenger Mode';var tagCls=r==='admin'?'pink':r==='cashier'?'gold':'green';var v=activate('dashboard');v.innerHTML='<div class="oj55-shell">'+hero(title,sub,tag,tagCls)+'<div class="oj55-card"><div class="oj55-title"><div><h2>Main Tools</h2><p>Organized by what this role actually needs.</p></div>'+chip('No auto repair loops','green')+'</div><div class="oj55-grid" style="margin-top:12px">'+homeCards()+'</div></div><div class="oj55-split"><div class="oj55-card"><div class="oj55-title"><div><h2>Workflow</h2><p>Simple step-by-step flow for daily use.</p></div></div><div class="oj55-flow" style="margin-top:12px">'+flowHtml()+'</div></div>'+shiftPanel()+'</div></div>';document.title='OceanJet V55 System UI';buildNav();}
+  function shiftPanel(){var m=metrics();var note=localStorage.getItem('oj55_shift_note')||'';return '<div class="oj55-card"><div class="oj55-title"><div><h2>Today</h2><p>'+esc(pht())+'</p></div>'+chip(m.storage.mb.toFixed(2)+'MB','')+'</div><div class="oj55-list" style="margin-top:12px"><div class="oj55-row"><div><b>Revenue snapshot</b><small>'+peso(m.rev)+' from local transactions/receipts.</small></div>'+chip(String(m.receipts)+' receipts','green')+'</div><div class="oj55-row"><div><b>Evidence records</b><small>'+m.evidence+' saved photo/evidence case(s) on this device.</small></div>'+chip(String(m.claims)+' claims','gold')+'</div></div><div class="input-group" style="margin-top:12px"><label>Shift note</label><textarea id="oj55ShiftNote" placeholder="Example: Morning shift, Cebu counter, scanner checked.">'+esc(note)+'</textarea></div><button class="primary block" onclick="oj55SaveNote()">Save Shift Note</button></div>'}
+  function renderLogin(type){type=type==='admin'?'admin':'cashier';var admin=type==='admin';var v=activate('login-'+type);v.innerHTML='<div class="oj55-shell"><div class="oj55-login oj55-card"><div class="oj55-title"><div><h1>'+(admin?'Admin Login':'Cashier Login')+'</h1><p>'+(admin?'Unlock full access to all tools.':'Unlock counter tools only.')+'</p></div>'+chip(admin?'Admin':'Cashier',admin?'pink':'gold')+'</div><div class="input-group" style="margin-top:14px"><label>Username</label><input id="oj55User" autocomplete="username" placeholder="'+(admin?'admin or demo':'cashier')+'"></div><div class="input-group"><label>Password</label><input id="oj55Pass" type="password" autocomplete="current-password" placeholder="Password" onkeydown="if(event.key===\'Enter\')oj55DoLogin(\''+type+'\')"></div><button class="primary" onclick="oj55DoLogin(\''+type+'\')">Login</button><button onclick="oj55Open(\'dashboard\')">Back to Passenger Hub</button><div class="oj55-note warn" style="margin-top:12px">Demo login: '+(admin?'admin/admin or demo/demo':'cashier/cashier')+'.</div></div></div>';setTimeout(function(){var u=$('oj55User');if(u)u.focus()},80);buildNav()}
+  function renderCommand(){var r=role();var actions=[['🧮','Baggage Calculator','calculator','Passenger/Cashier/Admin'],['📹','Damage Evidence','damage','Manual camera + paired batch'],['🧳','Start Claim','claim','Passenger report'],['🔎','Track Claim','track','Search records'],['💵','Fare Guide','fares','Fare reference'],['🕐','Schedules','schedules','Routes'],['👥','Counter Queue','staffcounter','Cashier/Admin'],['🧾','Receipt Desk','receipt','Cashier/Admin'],['📄','Reports','reports','Cashier/Admin'],['⚙️','Admin Panel','admin','Admin only'],['🛡️','System Tools','system','Admin only']];var html=actions.map(function(a){var locked=(['staffcounter','receipt','reports'].indexOf(a[2])>=0&&r==='pax')||(a[2]==='admin'&&r!=='admin')||(a[2]==='system'&&r!=='admin');return card(a[0],a[1],a[3],locked?(a[2]==='admin'||a[2]==='system'?'login-admin':'login-cashier'):a[2],locked?'locked':'',locked)}).join('');var v=activate('command');v.innerHTML='<div class="oj55-shell">'+hero('Command Center','One clean launcher for all modules. Search or tap the needed function.','Launcher','green')+'<div class="oj55-card"><div class="oj55-title"><div><h2>All Functions</h2><p>Old tools are preserved but organized under this new system UI.</p></div></div><div class="oj55-grid" style="margin-top:12px">'+html+'</div></div></div>';buildNav()}
+  function renderSystem(){if(role()!=='admin')return renderLogin('admin');var s=storageStats(),m=metrics();var v=activate('system');v.innerHTML='<div class="oj55-shell">'+hero('System Tools','Manual maintenance only. No automatic recovery screens or repeating UI rebuild loops are enabled by V55.','Admin','pink')+'<div class="oj55-card"><div class="oj55-grid2"><button class="primary block" onclick="oj55ExportSystem()">Download System JSON</button><button class="accent block" onclick="oj55ClearCache()">Clear Old App Cache</button><button class="block" onclick="oj55Open(\'backup\')">Open Original Backup Tools</button><button class="block" onclick="oj55Open(\'advanced\')">Open Advanced Modules</button></div><div class="oj55-note" style="margin-top:12px">Storage: '+s.mb.toFixed(2)+'MB • '+s.keys+' keys • '+s.pct+'% estimated local capacity. Evidence: '+m.evidence+' • Claims: '+m.claims+'.</div></div></div>';buildNav()}
+  function allowed(target){var r=role();target=String(target||'').toLowerCase();if(['staffcounter','quick-intake','receipt','reports'].indexOf(target)>=0)return r==='cashier'||r==='admin';if(['admin','backup','advanced','system'].indexOf(target)>=0)return r==='admin';return true}
+  function open(target){clearAutoTimers();target=String(target||'dashboard').replace(/^view-/,'').toLowerCase();if(target==='home')target='dashboard';closeDrawer();if(target==='dashboard')return renderHome();if(target==='command'||target==='launcher')return renderCommand();if(target==='system')return renderSystem();if(target==='login-cashier')return renderLogin('cashier');if(target==='login-admin')return renderLogin('admin');if(target==='logout'){setRole('pax');toast('Returned to Passenger mode');return renderHome()}if(['damage','scanner','camera','evidence','ar','evidence-studio'].indexOf(target)>=0){buildNav();return (typeof window.oj54OpenDamage==='function'?window.oj54OpenDamage():LEGACY_OPEN&&LEGACY_OPEN('damage'))}if(!allowed(target))return renderLogin(target==='admin'||target==='backup'||target==='advanced'?'admin':'cashier');try{if(typeof LEGACY_OPEN==='function'){var r=LEGACY_OPEN.call(window,target);buildNav();setTimeout(buildNav,80);return r}}catch(e){console.warn('V55 legacy open warning',e)}var v=activate(target);v.innerHTML='<div class="oj55-shell"><div class="oj55-card"><h2>'+esc(target)+'</h2><div class="oj55-note bad">This preserved module did not return a screen. Use Command Center or reload after clearing cache.</div><button class="primary block" onclick="oj55Open(\'dashboard\')">Back Home</button></div></div>';buildNav()}
+  function section(t){return '<div class="oj55-section">'+esc(t)+'</div>'}
+  function item(target,icon,label,sub){return '<div class="drawer-item oj55-menu" data-view="'+esc(target)+'" onclick="oj55Open(\''+esc(target)+'\')"><i>'+icon+'</i><span><b>'+esc(label)+'</b><small>'+esc(sub)+'</small></span></div>'}
+  function buildDrawer(){var box=$('drawerMenu');if(!box)return;var r=role();var html=section('Passenger')+item('dashboard','🏠','Service Hub','Role dashboard')+item('calculator','🧮','Baggage Calculator','Cebu ⇄ Maasin included')+item('damage','📹','Damage Evidence','Manual camera + paired batch')+item('claim','🧳','Start Claim','Passenger report')+item('track','🔎','Track Claim','Search record')+item('fares','💵','Fare Guide','Prices')+item('schedules','🕐','Schedules','Routes');if(r==='pax')html+=section('Login')+item('login-cashier','💼','Cashier Login','Counter tools')+item('login-admin','👑','Admin Login','Full access');if(r==='cashier'||r==='admin')html+=section('Cashier')+item('staffcounter','👥','Counter Queue','Verification desk')+item('receipt','🧾','Receipt Desk','Counter receipts')+item('reports','📄','Reports Center','Print / export')+item('history','📋','Transaction History','Calculator logs');if(r==='admin')html+=section('Admin')+item('command','🚢','Command Center','All functions')+item('admin','⚙️','Admin Panel','Original admin')+item('system','🛡️','System Tools','Cache + backup')+item('advanced','🧬','Advanced Modules','Preserved tools');if(r!=='pax')html+=section('Session')+item('logout','🚪','Logout','Return Passenger');box.innerHTML=html;setActive(activeName());}
+  function bottomItems(){var r=role();if(r==='admin')return [['dashboard','🏠','Home'],['command','🚢','Command'],['reports','📄','Reports'],['system','🛡️','System'],['admin','⚙️','Admin']];if(r==='cashier')return [['dashboard','🏠','Home'],['calculator','🧮','Calc'],['damage','📹','Damage'],['staffcounter','👥','Queue'],['reports','📄','Reports']];return [['dashboard','🏠','Home'],['calculator','🧮','Calc'],['damage','📹','Damage'],['track','🔎','Track'],['login-cashier','💼','Staff']]}
+  function buildNav(){buildDrawer();var nav=$('oj55BottomNav');if(!nav){nav=document.createElement('div');nav.id='oj55BottomNav';nav.className='oj55-bottom';document.body.appendChild(nav)}nav.innerHTML=bottomItems().map(function(x){return '<button data-view="'+esc(x[0])+'" onclick="oj55Open(\''+esc(x[0])+'\')"><i>'+x[1]+'</i><span>'+esc(x[2])+'</span></button>'}).join('');setActive(activeName())}
+  function activeName(){var a=document.querySelector('.view.active');return a?(a.id||'').replace(/^view-/,''):''}
+  function setActive(name){name=String(name||activeName()).replace(/^view-/,'');qsa('#drawerMenu .drawer-item').forEach(function(el){el.classList.toggle('active',String(el.dataset.view||'')===name)});qsa('#oj55BottomNav button').forEach(function(el){el.classList.toggle('active',String(el.dataset.view||'')===name)})}
+  function toast(msg){try{if(typeof window.toast==='function')return window.toast(msg)}catch(e){}var t=$('oj55Toast');if(!t){t=document.createElement('div');t.id='oj55Toast';t.className='oj52-toast';document.body.appendChild(t)}t.textContent=msg;t.classList.add('show');clearTimeout(t._tm);t._tm=setTimeout(function(){t.classList.remove('show')},2200)}
+  window.oj55Open=open;window.oj55SwitchRole=function(r){r=normRole(r);if(r==='pax'){setRole('pax');toast('Passenger mode');return renderHome()}return renderLogin(r)};window.oj55DoLogin=function(type){var u=($('oj55User')&&$('oj55User').value||'').trim().toLowerCase();var p=($('oj55Pass')&&$('oj55Pass').value||'').trim().toLowerCase();if(type==='cashier'&&u==='cashier'&&p==='cashier'){setRole('cashier');toast('Cashier unlocked');return renderHome()}if(type==='admin'&&((u==='admin'&&p==='admin')||(u==='demo'&&p==='demo'))){setRole('admin');toast('Admin unlocked');return renderHome()}toast('Invalid '+type+' login')};window.oj55Command=function(){var q=($('oj55Search')&&$('oj55Search').value||'').toLowerCase();var map=[['maasin','calculator'],['baggage','calculator'],['calc','calculator'],['damage','damage'],['scan','damage'],['evidence','damage'],['claim','claim'],['track','track'],['fare','fares'],['schedule','schedules'],['receipt','receipt'],['queue','staffcounter'],['counter','staffcounter'],['report','reports'],['pdf','reports'],['admin','login-admin'],['system','system'],['cache','system'],['command','command'],['cashier','login-cashier']];var hit=map.find(function(x){return q.indexOf(x[0])>=0});open(hit?hit[1]:'command')};window.oj55SaveNote=function(){try{localStorage.setItem('oj55_shift_note',($('oj55ShiftNote')&&$('oj55ShiftNote').value)||'');toast('Shift note saved')}catch(e){toast('Cannot save note')}};window.oj55ExportSystem=function(){var data={version:VERSION,exportedAt:new Date().toISOString(),role:role(),metrics:metrics(),claims:getClaims(),receipts:getReceipts(),evidence:getEvidence(),shiftNote:localStorage.getItem('oj55_shift_note')||''};var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='oceanjet_v55_system_'+today()+'.json';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},1000)};window.oj55ClearCache=async function(){try{if('serviceWorker' in navigator){var regs=await navigator.serviceWorker.getRegistrations();await Promise.all(regs.map(function(r){return r.unregister()}))}if(window.caches){var keys=await caches.keys();await Promise.all(keys.map(function(k){return caches.delete(k)}))}toast('Old app cache cleared. Reload once after upload.')}catch(e){toast('Cache clear failed: '+(e.message||e))}};
+  window.showView=open;window.navigate=open;window.oj52Open=open;window.buildDrawerMenu=buildDrawer;window.toggleDrawer=function(){buildNav();var d=$('sideDrawer'),o=$('overlay'),h=$('hamburger');if(d)d.classList.toggle('open');if(o)o.classList.toggle('show');if(h)h.classList.toggle('open')};window.closeDrawer=closeDrawer;window.logout=function(){open('logout')};try{showView=open;navigate=open;buildDrawerMenu=buildDrawer;toggleDrawer=window.toggleDrawer;closeDrawer=window.closeDrawer;logout=window.logout}catch(e){}
+  function boot(){document.body.classList.add('oj55-system');clearAutoTimers();setRole(role());var brand=document.querySelector('.brand');if(brand)brand.textContent='OceanJet Command';var appName=document.querySelector('meta[name="application-name"]');if(appName)appName.content='OceanJet Command V55';var theme=document.querySelector('meta[name="theme-color"]');if(theme)theme.content='#06111f';qsa('#aiFloatBtn,.ai-float-btn,#v6FloatTools,#v7MiniDock,#v8Dock,#v9CleanDock,#v10Dock,#v11Dock,.bottom-nav,.quick-dock').forEach(function(el){try{el.style.display='none';el.style.visibility='hidden';el.style.pointerEvents='none'}catch(e){}});buildNav();renderHome();console.log(VERSION+' loaded')}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
 </script>
 
