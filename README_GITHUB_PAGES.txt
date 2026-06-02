@@ -1,4 +1,3 @@
-OceanJet PortDesk V67 Baggage Calculator Restored
+OceanJet PortDesk V69 Baggage Always Visible
 
-Upload all files in this ZIP to GitHub Pages.
-Use Admin > System Tools > Clear Old App Cache after upload.
+Upload these files to GitHub Pages. The calculator now focuses on baggage-only estimates with detailed tier computation and clean destination choices.
