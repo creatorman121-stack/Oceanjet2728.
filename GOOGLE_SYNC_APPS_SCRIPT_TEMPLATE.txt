@@ -1,0 +1,4 @@
+OceanJet PortDesk V83 Google Sync Bridge
+
+Open the app as Admin > Cloud Sync > Download Template for the latest Apps Script code.
+This file is a helper note only. The in-app template is the source of truth.

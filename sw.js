@@ -1,4 +1,4 @@
-const CACHE = 'oceanjet-portdesk-v81-ai-managed-control-floor';
+const CACHE = 'oceanjet-portdesk-v84';
 const APP_SHELL = ['./index.html','./manifest.webmanifest','./operations-rules.json','./workflow-blueprint.json','./icons/icon-192.png','./icons/icon-512.png'];
 self.addEventListener('install', event => {
   self.skipWaiting();

@@ -1,7 +1,7 @@
 {
-  "name": "OceanJet PortDesk V81",
-  "short_name": "PortDesk V81",
-  "description": "OceanJet PortDesk V81 AI-managed control floor upgrade",
+  "name": "OceanJet PortDesk V84",
+  "short_name": "PortDesk V84",
+  "description": "OceanJet PortDesk V84 Smart Schedule and Google Sync Control with organized baggage calculator",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#061522",

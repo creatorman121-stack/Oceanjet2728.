@@ -1,2 +1,3 @@
-OceanJet PortDesk V81 AI Managed Control Floor
-Upload all files to GitHub Pages.
+OceanJet PortDesk V84 Smart Schedule + Sync Control
+
+Upload all files in this ZIP to GitHub Pages. Open index.html.
