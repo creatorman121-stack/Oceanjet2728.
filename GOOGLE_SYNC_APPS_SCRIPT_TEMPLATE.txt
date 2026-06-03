@@ -1,4 +1,8 @@
-OceanJet PortDesk V83 Google Sync Bridge
-
-Open the app as Admin > Cloud Sync > Download Template for the latest Apps Script code.
-This file is a helper note only. The in-app template is the source of truth.
+// OceanJet PortDesk optional Google Sheets endpoint template
+function doPost(e){
+  const payload = JSON.parse(e.postData.contents || '{}');
+  return ContentService.createTextOutput(JSON.stringify({ok:true,receivedAt:new Date().toISOString(),type:payload.type||'backup'})).setMimeType(ContentService.MimeType.JSON);
+}
+function doGet(){
+  return ContentService.createTextOutput(JSON.stringify({ok:true,service:'OceanJet PortDesk Sync'})).setMimeType(ContentService.MimeType.JSON);
+}

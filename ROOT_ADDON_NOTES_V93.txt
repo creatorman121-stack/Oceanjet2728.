@@ -1,0 +1,15 @@
+OceanJet V93 Root Add-on Merge
+
+This package removes the optional-addons folder.
+The safe baggage QA add-on is now placed directly in the root as:
+
+  v92_safe_baggage_qa_addon.js
+
+It is already linked in index.html after app.js.
+It does not change baggage formulas or UI behavior. It only exposes:
+
+  window.OceanJetV92QA.checkBaggageSlabs(data)
+
+for safe manual checks in the browser console.
+
+Main active app files remain the V91 accurate source merge files, with only index.html updated to load the root QA add-on and sw.js updated to cache it.

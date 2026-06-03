@@ -1,0 +1,19 @@
+V91/V92 Source-of-Truth Data Notes
+
+The active data.js was produced from the uploaded latestcode(1).html source values.
+It preserves the old slab-based baggage logic:
+- Slab 1: first 10kg of computed chargeable/excess weight.
+- Slab 2: next 30kg.
+- Slab 3: remaining kg after 40kg.
+
+Important Cebu route slab examples from the source:
+- cebu_tagbilaran normal [15,25,30], fragile [30,45,65]
+- cebu_getafe normal [10,20,25], fragile [25,40,60]
+- cebu_ormoc normal [20,27.5,32.5], fragile [35,50,70]
+- cebu_palompon normal [20,27.5,32.5], fragile [35,50,70]
+- cebu_maasin normal [20,27.5,32.5], fragile [35,50,70]
+- cebu_surigao normal [30,35,40], fragile [50,65,85]
+- cebu_dumaguete normal [25,30,35], fragile [40,55,75]
+- cebu_siquijor normal [20,27.5,32.5], fragile [35,50,70]
+
+Do not replace these with flat per-kg placeholder rates.

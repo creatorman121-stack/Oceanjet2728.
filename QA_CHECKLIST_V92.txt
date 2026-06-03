@@ -1,0 +1,51 @@
+OceanJet PortDesk V92 QA Checklist
+
+A. First Load
+[ ] Open index.html or GitHub Pages URL.
+[ ] Confirm dashboard loads without blank screen.
+[ ] Confirm no Playables SDK or game bridge is active.
+[ ] Confirm service worker registers only app assets.
+
+B. Role / Navigation
+[ ] Passenger view shows public/passenger tools.
+[ ] Cashier view shows baggage/payment-oriented tools.
+[ ] Admin view shows admin/system tools.
+[ ] Role badge updates instantly after switching.
+[ ] Sidebar and bottom/mobile navigation do not fight each other.
+
+C. Baggage Calculator
+[ ] Route list includes Cebu to Maasin, Surigao, Tagbilaran, Dumaguete, Siquijor, Ormoc, Getafe, Palompon.
+[ ] Normal mode uses tourist/business allowance.
+[ ] Fragile mode hides passenger/class fields as designed.
+[ ] Slab computation displays tier details.
+[ ] Receipt appears after calculation.
+[ ] Receipt is baggage-only.
+[ ] TXT download works.
+[ ] Print receipt works.
+
+D. Schedule / Vessel Board
+[ ] Schedule data appears for restored source routes.
+[ ] Current/next trip logic updates based on current time.
+[ ] Manual delayed/cancelled/closed statuses are not silently overwritten.
+[ ] Public vessel board export opens as clean HTML.
+
+E. Claims / Evidence
+[ ] Claim intake saves locally.
+[ ] Evidence upload is manual only.
+[ ] No automatic camera capture.
+[ ] No scanner starts on page load.
+[ ] Evidence links to claim/trip when available.
+[ ] Lock/delete/export actions behave safely.
+
+F. Offline / Sync
+[ ] App works with internet off after first load.
+[ ] Local storage is primary.
+[ ] Google Sync remains optional/manual.
+[ ] Download payload works.
+[ ] Test connection does not block offline app use.
+
+G. Mobile
+[ ] Cards are readable on phone.
+[ ] Forms are not hidden by keyboard.
+[ ] Bottom spacing prevents nav from covering content.
+[ ] Tap targets are comfortable.

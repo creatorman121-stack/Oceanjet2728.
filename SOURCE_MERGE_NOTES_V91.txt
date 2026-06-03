@@ -1,0 +1,13 @@
+OceanJet PortDesk V91 Accurate Source Merge
+
+This build uses the uploaded latestcode(1).html as source of truth for:
+- DEFAULT_DB.slabs
+- DEFAULT_DB.paxFares
+- DEFAULT_DB.schedules
+
+Important corrections from prior placeholder attempt:
+- Removed fake flat per-kg Cebu route rates.
+- Preserved slab-based baggage formulas from source.
+- Restored full 25-route schedule/fare/slab registry from latestcode(1).html.
+- Main Cebu routes retained: Cebu to Maasin, Surigao, Tagbilaran, Dumaguete, Siquijor, Ormoc, Getafe, Palompon.
+- Active app files contain no Playables SDK or AR scanner code.

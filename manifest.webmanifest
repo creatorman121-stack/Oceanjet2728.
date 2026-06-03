@@ -1,11 +1,10 @@
 {
-  "name": "OceanJet PortDesk V84",
-  "short_name": "PortDesk V84",
-  "description": "OceanJet PortDesk V84 Smart Schedule and Google Sync Control with organized baggage calculator",
+  "name": "OceanJet PortDesk V90",
+  "short_name": "PortDesk V90",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#061522",
-  "theme_color": "#051a2f",
+  "theme_color": "#0078a8",
   "icons": [
     {
       "src": "icons/icon-192.png",

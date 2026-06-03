@@ -1,0 +1,24 @@
+OceanJet PortDesk V90 code organization
+
+index.html
+- Minimal app shell only. No Playables SDK. No inline patch payload. Loads styles.css, data.js, app.js.
+
+styles.css
+- Professional responsive OceanJet UI, bottom navigation, cards, receipt styling, print rules, mobile spacing.
+
+data.js
+- Routes, schedules, fares, baggage slab rates, role navigation, default local data.
+
+app.js
+- State, role/login/navigation, smart vessel board, baggage calculator, claims, manual evidence, schedules, reports, sync, and system tools.
+
+sw.js
+- Event-based static cache only.
+
+Excluded from V90:
+- Playables SDK
+- AR scanner / auto camera
+- MutationObserver repair patches
+- DOM repair loops
+- fake live monitor timers
+- duplicate inline.js payloads

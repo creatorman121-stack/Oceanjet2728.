@@ -1,0 +1,22 @@
+OceanJet PortDesk V90 Merged Complete Clean Professional
+
+Merged from the existing V90 complete clean professional package.
+The pasted HTML shell was not used as a replacement because it contained Playables SDK, a stray leading character, malformed section wrappers, and a simplified baggage formula.
+
+Preserved from V90:
+- Real OceanJet Cebu route list
+- Slab-based baggage calculator
+- Baggage-only receipt with TXT download and print
+- Smart vessel board and current/next trip logic
+- Schedule Control
+- Claim Intake and Review Queue
+- Manual-only Evidence Studio
+- Reports, Sync, System Tools
+- Offline-first local storage
+
+Removed/not merged:
+- Playables SDK
+- Touch-patch/game bridge
+- Simplified mock baggage calculator
+- Malformed/unclosed pasted HTML sections
+- Scanner/recovery/observer repair code

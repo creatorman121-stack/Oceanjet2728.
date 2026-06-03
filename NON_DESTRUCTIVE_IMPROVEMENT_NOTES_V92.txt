@@ -1,0 +1,18 @@
+OceanJet PortDesk V92 Non-Destructive Improvement Pack
+
+This package intentionally preserves the active V91 source files unchanged:
+- index.html
+- styles.css
+- data.js
+- app.js
+- sw.js
+- manifest.webmanifest
+
+No active code was edited for this pass. The improvement is organizational and operational:
+1. Added QA procedure/checklist.
+2. Added deployment guide.
+3. Added source-of-truth data notes for baggage slabs, fares, and schedules.
+4. Added optional future add-on files that are NOT loaded by index.html.
+5. Added SHA-256 hash file proving active files are unchanged from V91 before this pack was added.
+
+Use this ZIP when you want the stable V91 app plus better documentation and controlled future patches without altering working code.

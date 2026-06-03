@@ -1,0 +1,13 @@
+OceanJet PortDesk GitHub Pages Deployment Guide
+
+1. Extract this ZIP.
+2. Upload all files to the root of your GitHub Pages repository.
+3. Make sure index.html is in the root folder.
+4. Commit and push.
+5. Open the GitHub Pages URL.
+6. After deploying a new ZIP, hard refresh the browser once to avoid stale service-worker cache.
+
+Important:
+- Do not delete data.js because it contains the source-merged baggage/schedule data.
+- Do not replace app.js with older patch code.
+- Optional files in optional-addons/ are not active unless you manually load them.

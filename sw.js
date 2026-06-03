@@ -1,17 +1,12 @@
-const CACHE = 'oceanjet-portdesk-v84';
-const APP_SHELL = ['./index.html','./manifest.webmanifest','./operations-rules.json','./workflow-blueprint.json','./icons/icon-192.png','./icons/icon-512.png'];
+const CACHE_NAME = 'oceanjet-portdesk-v93-root-addon';
+const ASSETS = ['./', './index.html', './styles.css', './data.js', './app.js', './manifest.webmanifest', './v92_safe_baggage_qa_addon.js'];
 self.addEventListener('install', event => {
-  self.skipWaiting();
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(APP_SHELL).catch(()=>{})));
+  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', event => {
-  event.waitUntil((async()=>{
-    const keys = await caches.keys();
-    await Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)));
-    await self.clients.claim();
-  })());
+  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))).then(() => self.clients.claim()));
 });
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-  event.respondWith(fetch(event.request).catch(() => caches.match(event.request).then(res => res || caches.match('./index.html'))));
+  event.respondWith(fetch(event.request).catch(() => caches.match(event.request).then(hit => hit || caches.match('./index.html'))));
 });
